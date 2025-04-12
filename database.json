@@ -1,0 +1,35 @@
+{
+  "_id": {
+    "$oid": "67f9d9afbecf2daf08d597c3c"
+  },
+  "spanish": "libro",
+  "english": "book",
+  "arabic_sg": "كتاب",
+  "arabic_pl": "كتب",
+  "translit_sg": "kitāb",
+  "translit_pl": "kutub",
+  "quranic_appear": {
+    "appearance": "2:2",
+    "sentence": "ذَٰلِكَ ٱلْكِتَـٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًۭى لِّلْمُتَّقِينَ",
+    "translation": "Ese libro, sin duda, contiene una guía para los temerosos"
+  },
+  "root": ["ك", "ت", "ب"],
+  "hadith_appear": {
+    "collection": "bukhari",
+    "collection_name": "Sahih al-Bukhari",
+    "number": "6098",
+    "sentence": "قَالَ عَبْدُ اللَّهِ إِنَّ أَحْسَنَ الْحَدِيثِ كِتَابُ اللَّهِ",
+    "translation": "Dijo: Para Allah la mejor palabra es el libro de Allah"
+  },
+  "phrase": {
+    "arabic": "معهم كتاب",
+    "meaning": "they have a book",
+    "translit": "maʿahum kitabun"
+  },
+  "neoarabism": false,
+  "dipote": false,
+  "foreign": false,
+  "pl_diptote": false,
+  "synonim": "",
+  "antonym": ""
+}
