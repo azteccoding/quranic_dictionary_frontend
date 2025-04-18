@@ -1,0 +1,37 @@
+{
+  "_id": {
+    "$oid": "67ff0b869bed0684b42a153c"
+  },
+  "spanish": ["cuerpo", "sustancia", "volumen", "masa"],
+  "english": "body",
+  "arabic_sg": "جسم",
+  "arabic_pl": ["اجسام", "جسوم"],
+  "translit_sg": "jism",
+  "translit_pl": ["ajsām", "jusūm"],
+  "quranic_appear": {
+    "appearance": "63:4",
+    "sentence": "وَإِذَا رَأَيْتَهُمْ تُعْجِبُكَ أَجْسَامُهُمْ",
+    "translation": "Cuando los ves, te gusta su aspecto"
+  },
+  "root": ["ج", "س", "م"],
+  "hadith_appear": {
+    "collection": "tirmidhi",
+    "collection_name": "Jami at-Tirmidhi",
+    "number": "3136",
+    "sentence": "َوَيُمَدُّ لَهُ فِي جِسْمِهِ سِتُّونَ ذِرَاعًا",
+    "translation": "Su cuerpo se extendrá a sesenta brazos"
+  },
+  "phrase": {
+    "arabic": "المكان اإنّما هو للاجسام",
+    "meaning": "El espacio es solo para cuerpos (u objetos) creados",
+    "translit": "al makānu innamā huwa li l-ajsām"
+  },
+  "masculine": true,
+  "dipote": false,
+  "foreign": false,
+  "pl_diptote": false,
+  "synonim": "",
+  "antonym": "",
+  "noun": true,
+  "verb": false
+}
