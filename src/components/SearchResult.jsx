@@ -61,6 +61,11 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         <p>{r.phrase.arabic}</p>
         <p>{r.phrase.translit}</p>
         <p>{r.phrase.meaning}</p>
+        {r.phrase?.reference ? (
+          <p style={{ fontSize: "0.7rem" }}>Fuente: {r.phrase.reference}</p>
+        ) : (
+          ""
+        )}
         <p style={{ fontSize: "0.8rem" }}>
           <a
             target="blank"
@@ -107,6 +112,25 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           Escuchar pronunciación
         </a>
       </p>
+      <div>
+        {r.phrase?.arabic && <h4>Ejemplos de uso</h4>}
+        <p>{r.phrase.arabic}</p>
+        <p>{r.phrase.translit}</p>
+        <p>{r.phrase.meaning}</p>
+        {r.phrase?.reference ? (
+          <p style={{ fontSize: "0.7rem" }}>Fuente: {r.phrase.reference}</p>
+        ) : (
+          ""
+        )}
+        <p style={{ fontSize: "0.8rem" }}>
+          <a
+            target="blank"
+            href={`https://translate.google.com/?sl=ar&tl=en&text=${r.phrase.arabic}&op=translate`}
+          >
+            Escuchar pronunciación
+          </a>
+        </p>
+      </div>
     </div>
   );
 

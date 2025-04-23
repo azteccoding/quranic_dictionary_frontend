@@ -59,7 +59,7 @@ const Searchbar = () => {
   return (
     <>
       <div>
-        <h1>Diccionario {searchTitle}</h1>
+        <h1 style={{ paddingTop: "3rem" }}>Diccionario {searchTitle}</h1>
 
         <div
           style={{

@@ -1,37 +1,39 @@
 {
   "_id": {
-    "$oid": "67ff0b869bed0684b42a153c"
+    "$oid": "6807f8f31ab206c8f041ae53"
   },
-  "spanish": ["cuerpo", "sustancia", "volumen", "masa"],
-  "english": "body",
-  "arabic_sg": "جسم",
-  "arabic_pl": ["اجسام", "جسوم"],
-  "translit_sg": "jism",
-  "translit_pl": ["ajsām", "jusūm"],
+  "spanish": ["casa"],
+  "english": "house",
+  "arabic_sg": "بيت",
+  "arabic_pl": ["بيوت"],
+  "translit_sg": "bayt",
+  "translit_pl": ["buyūt"],
   "quranic_appear": {
-    "appearance": "63:4",
-    "sentence": "وَإِذَا رَأَيْتَهُمْ تُعْجِبُكَ أَجْسَامُهُمْ",
-    "translation": "Cuando los ves, te gusta su aspecto"
+    "appearance": "16:80",
+    "sentence": "وَٱللَّهُ جَعَلَ لَكُم مِّنۢ بُيُوتِكُمْ سَكَنًۭا",
+    "translation": "Y Allah ha hecho de vuestras casas descanso para vosotros"
   },
-  "root": ["ج", "س", "م"],
+  "root": ["ب", "ي", "ت"],
   "hadith_appear": {
-    "collection": "tirmidhi",
-    "collection_name": "Jami at-Tirmidhi",
-    "number": "3136",
-    "sentence": "َوَيُمَدُّ لَهُ فِي جِسْمِهِ سِتُّونَ ذِرَاعًا",
-    "translation": "Su cuerpo se extendrá a sesenta brazos"
+    "collection": "ibnmajah",
+    "collection_name": "Sunan Ibn Majah",
+    "number": "3328",
+    "sentence": "بَيْتٌ لاَ تَمْرَ فِيهِ كَالْبَيْتِ لاَ طَعَامَ فِيهِ",
+    "translation": "Una casa en la que no hay dátiles, es una casa en la que no hay comida"
   },
   "phrase": {
-    "arabic": "المكان اإنّما هو للاجسام",
-    "meaning": "El espacio es solo para cuerpos (u objetos) creados",
-    "translit": "al makānu innamā huwa li l-ajsām"
+    "arabic": "الصلاة جائزة في البيع والكنائس والبيت من بيوت النيران والبيوت البدّ",
+    "meaning": "El salat está permitido en las sinagogas, iglesias y casas de fuego y casas de ídolos",
+    "reference": "Ibn Hazm. Muhalla, vol. 2 pág.136-7",
+    "translit": "aṣ-ṣalātu jā'izatun fi l-biyaʿi wa l-kanā'isi wa l-bayti min buyūti an-nīrān wa buyūti l-buddi"
   },
-  "masculine": true,
   "dipote": false,
   "foreign": false,
   "pl_diptote": false,
   "synonim": "",
   "antonym": "",
   "noun": true,
-  "verb": false
+  "verb": false,
+  "masculine": true,
+  "form": ""
 }
