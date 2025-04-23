@@ -61,30 +61,27 @@ const Searchbar = () => {
       <div>
         <h1 style={{ paddingTop: "3rem" }}>Diccionario {searchTitle}</h1>
 
-        <div
-          style={{
-            margin: "1rem",
-            textAlign: "left",
-            paddingLeft: "8rem",
-          }}
-        >
-          <div className="form-check form-switch">
+        <div className="spacing-width">
+          <div className="form-check form-switch ">
             <input
-              class="form-check-input"
+              class="form-check-input switch-mobile"
               type="checkbox"
               role="switch"
               onChange={handleToggle}
               id="switchCheckDefault"
             />
 
-            <label class="form-check-label" for="switchCheckDefault">
+            <label
+              class="form-check-label label-mobile"
+              for="switchCheckDefault"
+            >
               Buscar palabra en {arab2EspSelected ? "árabe" : "español"}
             </label>
           </div>
         </div>
 
         <form
-          class="row g-2 align-items-center"
+          class="row g-2 align-items-center form-field"
           style={{ padding: "1rem 9rem" }}
           onSubmit={handleSubmit}
         >
@@ -94,14 +91,15 @@ const Searchbar = () => {
           <input
             type="search"
             id="gsearch"
-            class="form-control"
+            class="form-control mobile-input-lg"
             aria-label="default input example"
             name="gsearch"
             placeholder={arab2EspSelected ? "كتاب" : "libro"}
             onChange={handleInput}
             value={searchWord}
           />
-          <input type="submit" class="btn btn-primary mb-3" />
+
+          <input type="submit" class="btn btn-primary mb-4 btn-lg" />
         </form>
       </div>
       {searchActive && !wordNotFoundInDictionary && !hasQueryError ? (
@@ -113,7 +111,7 @@ const Searchbar = () => {
         ? "Esa palabra aun no se encuentra en el diccionario"
         : ""}
       <div className="signature">
-        {"Programación e investigación por Khalid Jorge"}
+        {"Investigación y programación por Khalid Jorge"}
       </div>
     </>
   );
