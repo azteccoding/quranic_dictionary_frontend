@@ -3,12 +3,16 @@ import ColorTags from "./ColorTags";
 const SearchResult = ({ arabSearch, queryResult: r }) => {
   const ArabicSearch = r?.arabic_sg && (
     <div>
-      <h2>{r.arabic_sg} </h2>
-      <p>{r.translit_sg}</p>
+      <h2 className="arabic-word-xxl">{r.arabic_sg} </h2>
+      <p className="arabic-word-s">{r.translit_sg}</p>
       <div>
         pl.
         {r.arabic_pl.map((item, index) => (
-          <p key={item + "p"} style={{ display: "inline", margin: "0.3rem" }}>
+          <p
+            key={item + "p"}
+            className="arabic-word-xs"
+            style={{ display: "inline", margin: "0.3rem" }}
+          >
             {item} ({r.translit_pl[index]}),
           </p>
         ))}
@@ -27,7 +31,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         {r.quranic_appear?.appearance && (
           <h4>En el Corán aparece en {r.quranic_appear?.appearance}</h4>
         )}
-        <p>{r.quranic_appear.sentence}</p>
+        <p className="arabic-word-s">{r.quranic_appear.sentence}</p>
         <p>"{r.quranic_appear.translation}"</p>
         <p style={{ fontSize: "0.8rem" }}>
           <a
@@ -43,7 +47,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         {r.hadith_appear?.collection_name && (
           <h4>En la Sunna aparece en {r.hadith_appear?.collection_name}</h4>
         )}
-        <p>{r.hadith_appear.sentence}</p>
+        <p className="arabic-word-s">{r.hadith_appear.sentence}</p>
         <p>"{r.hadith_appear.translation}"</p>
         <p style={{ fontSize: "0.7rem" }}>
           Fuente:{" "}
@@ -58,7 +62,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
 
       <div>
         {r.phrase?.arabic && <h4>Ejemplos de uso</h4>}
-        <p>{r.phrase.arabic}</p>
+        <p className="arabic-word-s">{r.phrase.arabic}</p>
         <p>{r.phrase.translit}</p>
         <p>{r.phrase.meaning}</p>
         {r.phrase?.reference ? (
@@ -90,7 +94,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           </p>
         ))}
       </h2>
-      <p>
+      <p className="arabic-word-xs">
         Traducción: {r.arabic_sg} {r.translit_sg}
       </p>
       <div>
@@ -98,6 +102,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         {r.arabic_pl.map((w, i) => (
           <p
             key={i + "pls"}
+            className="arabic-word-s"
             style={{ display: "inline-block", margin: "0.3rem" }}
           >
             {r.arabic_pl[i]} ({r.translit_pl[i]}),{" "}
@@ -114,7 +119,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
       </p>
       <div>
         {r.phrase?.arabic && <h4>Ejemplos de uso</h4>}
-        <p>{r.phrase.arabic}</p>
+        <p className="arabic-word-s">{r.phrase.arabic}</p>
         <p>{r.phrase.translit}</p>
         <p>{r.phrase.meaning}</p>
         {r.phrase?.reference ? (

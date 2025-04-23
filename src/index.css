@@ -19,6 +19,30 @@ body {
   text-align: left;
 }
 
+.arabic-word-xs {
+  font-size: 1.4rem;
+}
+
+.arabic-word-s {
+  font-size: 1.6rem;
+}
+
+.arabic-word-m {
+  font-size: 1.8rem;
+}
+
+.arabic-word-l {
+  font-size: 1.9rem;
+}
+
+.arabic-word-xl {
+  font-size: 2.1rem;
+}
+
+.arabic-word-xxl {
+  font-size: 2.3rem;
+}
+
 @media (max-width: 768px) {
   .switch-mobile {
     transform: scale(1.6); /* Aumenta visualmente el tamaño del switch */
