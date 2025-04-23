@@ -5,14 +5,14 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
     <div>
       <h2>{r.arabic_sg} </h2>
       <p>{r.translit_sg}</p>
-      <p>
+      <div>
         pl.
         {r.arabic_pl.map((item, index) => (
           <p key={item + "p"} style={{ display: "inline", margin: "0.3rem" }}>
             {item} ({r.translit_pl[index]}),
           </p>
         ))}
-      </p>
+      </div>
       <div>
         Traducción:{" "}
         {r.spanish.map((i) => (
@@ -75,7 +75,16 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
 
   const SpanishSearch = r?.arabic_sg && (
     <div>
-      <h2>{r.spanish}</h2>
+      <h2>
+        {r.spanish.map((w, i) => (
+          <p
+            key={i + "pls"}
+            style={{ display: "inline-block", margin: "0.3rem" }}
+          >
+            {w} {","}
+          </p>
+        ))}
+      </h2>
       <p>
         Traducción: {r.arabic_sg} {r.translit_sg}
       </p>

@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import { mockDBQuery } from "../mocks/mockDBQuery";
+// import { mockDBQuery } from "../mocks/mockDBQuery";
 import SearchResult from "./SearchResult";
+import { findInDictionary } from "../services/requests";
 
 const Searchbar = () => {
   const arab2EspTitle = "árabe coránico - español";
   const esp2ArabTitle = "español - árabe coránico";
+  const [wordNotFoundInDictionary, setWordNotFoundInDictionary] =
+    useState(false);
+  const [hasQueryError, setHasQueryError] = useState(false);
   const [arab2EspSelected, setArab2EspSelected] = useState(true);
   const [searchTitle, setSearchTitle] = useState();
   const [searchWord, setSearchWord] = useState("");
@@ -28,10 +32,28 @@ const Searchbar = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    const { data } = await findInDictionary(searchWord, arab2EspSelected);
+
+    try {
+      if (data?.data?.length) {
+        const res = data.data[0];
+        setQueryResult(res);
+        setHasQueryError(false);
+        setWordNotFoundInDictionary(false);
+      } else {
+        setHasQueryError(true);
+        console.log("No data for that word: " + searchWord);
+        setWordNotFoundInDictionary(true);
+      }
+    } catch (error) {
+      console.log("==========ERROR FETCHING============");
+      console.log(error);
+      console.log("====================================");
+      setHasQueryError(true);
+    }
+
     setSearchWord("");
     setSearchActive(true);
-    const res = await mockDBQuery();
-    setQueryResult(res);
   }
 
   return (
@@ -82,11 +104,14 @@ const Searchbar = () => {
           <input type="submit" class="btn btn-primary mb-3" />
         </form>
       </div>
-      {searchActive ? (
+      {searchActive && !wordNotFoundInDictionary && !hasQueryError ? (
         <SearchResult arabSearch={arab2EspSelected} queryResult={queryResult} />
       ) : (
         ""
       )}
+      {wordNotFoundInDictionary && hasQueryError
+        ? "Esa palabra aun no se encuentra en el diccionario"
+        : ""}
     </>
   );
 };
