@@ -112,6 +112,9 @@ const Searchbar = () => {
       {wordNotFoundInDictionary && hasQueryError
         ? "Esa palabra aun no se encuentra en el diccionario"
         : ""}
+      <div className="signature">
+        {"Programación e investigación por Khalid Jorge"}
+      </div>
     </>
   );
 };
