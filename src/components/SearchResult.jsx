@@ -155,6 +155,12 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}
+      {r.foreign && (
+        <div>
+          <h6>Etimología del vocablo</h6>
+          <p>{r.etymology}</p>
+        </div>
+      )}
       <footer>
         <p style={{ fontSize: "0.5rem" }}>Fuentes:</p>
         <p style={{ fontSize: "0.5rem" }}>

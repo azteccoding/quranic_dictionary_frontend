@@ -22,7 +22,7 @@ const ColorTags = ({ tags }) => {
   const pluralDiptote = tags.pl_diptote && (
     <span className="badge text-bg-warning">Plural diptote</span>
   );
-  const foreignWord = tags.foreing && (
+  const foreignWord = tags.foreign && (
     <span className="badge text-bg-info">Extranjerismo</span>
   );
   const verbForm = tags.verb && (
