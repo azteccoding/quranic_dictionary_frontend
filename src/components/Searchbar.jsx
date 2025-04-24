@@ -129,9 +129,7 @@ const Searchbar = () => {
       <div className="signature">
         {"Investigación y programación por Khalid Jorge"}
       </div>
-      {queryResult?.length === 0 && (
-        <div style={{ paddingBottom: "9rem" }}></div>
-      )}
+      {queryResult?.length === 0 && <div className="bottom-filler"></div>}
     </>
   );
 };

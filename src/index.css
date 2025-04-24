@@ -15,6 +15,10 @@ body {
   background-color: #fffceb;
 }
 
+.bottom-filler {
+  padding-bottom: 9rem;
+}
+
 .footer {
   padding-top: 1rem;
 }
@@ -81,5 +85,9 @@ body {
 
   .form-field {
     padding: 1rem 1rem !important; /* Reduce padding en móviles */
+  }
+
+  .bottom-filler {
+    padding-bottom: 16rem;
   }
 }
