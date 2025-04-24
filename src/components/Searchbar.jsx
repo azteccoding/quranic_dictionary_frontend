@@ -8,16 +8,17 @@ const Searchbar = () => {
   const esp2ArabTitle = "español - árabe coránico";
   const [wordNotFoundInDictionary, setWordNotFoundInDictionary] =
     useState(false);
-  const [hasQueryError, setHasQueryError] = useState(false);
   const [arab2EspSelected, setArab2EspSelected] = useState(true);
   const [searchTitle, setSearchTitle] = useState();
   const [searchWord, setSearchWord] = useState("");
   const [searchActive, setSearchActive] = useState(false);
   const [queryResult, setQueryResult] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
-  }, [arab2EspSelected, searchActive]);
+  }, [arab2EspSelected, searchActive, searchWord]);
 
   function handleInput(event) {
     setSearchWord(event.target.value);
@@ -28,32 +29,35 @@ const Searchbar = () => {
     setSearchWord("");
     setQueryResult("");
     setArab2EspSelected(!arab2EspSelected);
+    setWordNotFoundInDictionary(false);
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const { data } = await findInDictionary(searchWord, arab2EspSelected);
 
-    try {
-      if (data?.data?.length) {
-        const res = data.data[0];
-        setQueryResult(res);
-        setHasQueryError(false);
-        setWordNotFoundInDictionary(false);
-      } else {
-        setHasQueryError(true);
-        console.log("No data for that word: " + searchWord);
-        setWordNotFoundInDictionary(true);
+    if (searchWord) {
+      setIsLoading(true);
+
+      const { data } = await findInDictionary(searchWord, arab2EspSelected);
+
+      try {
+        if (data?.data?.length) {
+          const res = data.data[0];
+          setQueryResult(res);
+          setWordNotFoundInDictionary(false);
+        } else {
+          console.log("No data for that word: " + searchWord);
+          setWordNotFoundInDictionary(true);
+        }
+      } catch (error) {
+        console.log("==========ERROR FETCHING============");
+        console.log(error);
+        console.log("====================================");
       }
-    } catch (error) {
-      console.log("==========ERROR FETCHING============");
-      console.log(error);
-      console.log("====================================");
-      setHasQueryError(true);
-    }
 
-    setSearchWord("");
-    setSearchActive(true);
+      setSearchWord("");
+      setSearchActive(true);
+    }
   }
 
   return (
@@ -102,12 +106,17 @@ const Searchbar = () => {
           <input type="submit" class="btn btn-primary mb-4 btn-lg" />
         </form>
       </div>
-      {searchActive && !wordNotFoundInDictionary && !hasQueryError ? (
+      {isLoading && (
+        <div class="spinner-grow" role="status">
+          <span class="sr-only"></span>
+        </div>
+      )}
+      {searchActive && !wordNotFoundInDictionary && !isLoading ? (
         <SearchResult arabSearch={arab2EspSelected} queryResult={queryResult} />
       ) : (
         ""
       )}
-      {wordNotFoundInDictionary && hasQueryError
+      {wordNotFoundInDictionary && !isLoading
         ? "Esa palabra aun no se encuentra en el diccionario"
         : ""}
       <div className="signature">
