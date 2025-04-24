@@ -4,8 +4,8 @@ import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
 
 const Searchbar = () => {
-  const arab2EspTitle = "árabe coránico - español";
-  const esp2ArabTitle = "español - árabe coránico";
+  const arab2EspTitle = "Árabe coránico - Español";
+  const esp2ArabTitle = "Español - Árabe coránico";
   const [wordNotFoundInDictionary, setWordNotFoundInDictionary] =
     useState(false);
   const [arab2EspSelected, setArab2EspSelected] = useState(true);
@@ -46,6 +46,7 @@ const Searchbar = () => {
           setQueryResult(res);
           setWordNotFoundInDictionary(false);
         } else {
+          setQueryResult([]);
           console.log("No data for that word: " + searchWord);
           setWordNotFoundInDictionary(true);
         }
@@ -79,7 +80,8 @@ const Searchbar = () => {
               class="form-check-label label-mobile"
               for="switchCheckDefault"
             >
-              Buscar palabra en {arab2EspSelected ? "árabe" : "español"}
+              Buscar palabra en{" "}
+              {arab2EspSelected ? "árabe coránico" : "español"}
             </label>
           </div>
         </div>
@@ -127,6 +129,9 @@ const Searchbar = () => {
       <div className="signature">
         {"Investigación y programación por Khalid Jorge"}
       </div>
+      {queryResult?.length === 0 && (
+        <div style={{ paddingBottom: "9rem" }}></div>
+      )}
     </>
   );
 };
