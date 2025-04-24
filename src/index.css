@@ -7,10 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.footer {
+  padding-top: 1rem;
+}
+
 .signature {
   font-weight: bold;
   font-size: 1rem;
   font-style: normal;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .spacing-width {

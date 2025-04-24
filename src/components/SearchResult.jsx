@@ -161,7 +161,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           <p>{r.etymology}</p>
         </div>
       )}
-      <footer>
+      <footer className="footer">
         <p style={{ fontSize: "0.5rem" }}>Fuentes:</p>
         <p style={{ fontSize: "0.5rem" }}>
           Badawi, E. M., & Abdel Haleem, M. (2008). Arabic-English dictionary of
