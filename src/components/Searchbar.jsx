@@ -12,7 +12,7 @@ const Searchbar = () => {
   const [searchTitle, setSearchTitle] = useState();
   const [searchWord, setSearchWord] = useState("");
   const [searchActive, setSearchActive] = useState(false);
-  const [queryResult, setQueryResult] = useState("");
+  const [queryResult, setQueryResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Searchbar = () => {
 
       try {
         if (data?.data?.length) {
-          const res = data.data[0];
+          const res = data.data;
           setQueryResult(res);
           setWordNotFoundInDictionary(false);
         } else {
@@ -111,11 +111,16 @@ const Searchbar = () => {
           <span class="sr-only"></span>
         </div>
       )}
-      {searchActive && !wordNotFoundInDictionary && !isLoading ? (
-        <SearchResult arabSearch={arab2EspSelected} queryResult={queryResult} />
-      ) : (
-        ""
+      {queryResult?.length > 0 && (
+        <p>
+          {queryResult.length} concidencia{queryResult.length > 1 ? "s" : ""}
+        </p>
       )}
+      {searchActive && !wordNotFoundInDictionary && !isLoading
+        ? queryResult.map((word) => (
+            <SearchResult arabSearch={arab2EspSelected} queryResult={word} />
+          ))
+        : ""}
       {wordNotFoundInDictionary && !isLoading
         ? "Esa palabra aun no se encuentra en el diccionario"
         : ""}
