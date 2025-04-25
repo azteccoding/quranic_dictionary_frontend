@@ -91,3 +91,9 @@ body {
     padding-bottom: 16rem;
   }
 }
+
+@media (min-height: 768px) {
+  .bottom-filler {
+    padding-bottom: 36rem;
+  }
+}

@@ -17,7 +17,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           </p>
         ))}
       </div>
-      <div>
+      <div className="arabic-word-xs" style={{ paddingTop: "1rem" }}>
         Traducción:{" "}
         {r.spanish.map((i) => (
           <p key={i + "p"} style={{ display: "inline", margin: "0.3rem" }}>

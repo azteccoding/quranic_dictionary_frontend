@@ -115,7 +115,7 @@ const Searchbar = () => {
       )}
       {queryResult?.length > 0 && (
         <p>
-          {queryResult.length} concidencia{queryResult.length > 1 ? "s" : ""}
+          {queryResult.length} coincidencia{queryResult.length > 1 ? "s" : ""}
         </p>
       )}
       {searchActive && !wordNotFoundInDictionary && !isLoading
