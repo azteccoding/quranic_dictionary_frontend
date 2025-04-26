@@ -1,22 +1,25 @@
 import ColorTags from "./ColorTags";
+import TextInstances from "./TextInstances";
 
 const SearchResult = ({ arabSearch, queryResult: r }) => {
   const ArabicSearch = r?.arabic_sg && (
     <div>
       <h2 className="arabic-word-xxl">{r.arabic_sg} </h2>
       <p className="arabic-word-s">{r.translit_sg}</p>
-      <div>
-        pl.
-        {r.arabic_pl.map((item, index) => (
-          <p
-            key={item + "p"}
-            className="arabic-word-xs"
-            style={{ display: "inline", margin: "0.3rem" }}
-          >
-            {item} ({r.translit_pl[index]}),
-          </p>
-        ))}
-      </div>
+      {r.arabic_pl.length > 0 && (
+        <div>
+          pl.
+          {r.arabic_pl.map((item, index) => (
+            <p
+              key={item + "p"}
+              className="arabic-word-xs"
+              style={{ display: "inline", margin: "0.3rem" }}
+            >
+              {item} ({r.translit_pl[index]}),
+            </p>
+          ))}
+        </div>
+      )}
       <div className="arabic-word-xs" style={{ paddingTop: "1rem" }}>
         Traducción:{" "}
         {r.spanish.map((i) => (
@@ -26,59 +29,6 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         ))}
       </div>
       <div style={{ margin: "1rem" }}></div>
-
-      <div>
-        {r.quranic_appear?.appearance && (
-          <h4>En el Corán aparece en {r.quranic_appear?.appearance}</h4>
-        )}
-        <p className="arabic-word-s">{r.quranic_appear.sentence}</p>
-        <p>"{r.quranic_appear.translation}"</p>
-        <p style={{ fontSize: "0.8rem" }}>
-          <a
-            target="blank"
-            href={`https://quran.com/${r.quranic_appear?.appearance}?translations=28%2C199`}
-          >
-            Leer en el Corán
-          </a>
-        </p>
-      </div>
-
-      <div>
-        {r.hadith_appear?.collection_name && (
-          <h4>En la Sunna aparece en {r.hadith_appear?.collection_name}</h4>
-        )}
-        <p className="arabic-word-s">{r.hadith_appear.sentence}</p>
-        <p>"{r.hadith_appear.translation}"</p>
-        <p style={{ fontSize: "0.7rem" }}>
-          Fuente:{" "}
-          <a
-            target="blank"
-            href={`https://sunnah.com/${r.hadith_appear.collection}:${r.hadith_appear.number}`}
-          >
-            {r.hadith_appear.collection_name} {r.hadith_appear.number}
-          </a>
-        </p>
-      </div>
-
-      <div>
-        {r.phrase?.arabic && <h4>Ejemplos de uso</h4>}
-        <p className="arabic-word-s">{r.phrase.arabic}</p>
-        <p>{r.phrase.translit}</p>
-        <p>{r.phrase.meaning}</p>
-        {r.phrase?.reference ? (
-          <p style={{ fontSize: "0.7rem" }}>Fuente: {r.phrase.reference}</p>
-        ) : (
-          ""
-        )}
-        <p style={{ fontSize: "0.8rem" }}>
-          <a
-            target="blank"
-            href={`https://translate.google.com/?sl=ar&tl=en&text=${r.phrase.arabic}&op=translate`}
-          >
-            Escuchar pronunciación
-          </a>
-        </p>
-      </div>
     </div>
   );
 
@@ -97,18 +47,20 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
       <p className="arabic-word-xs">
         Traducción: {r.arabic_sg} {r.translit_sg}
       </p>
-      <div>
-        pl.{" "}
-        {r.arabic_pl.map((w, i) => (
-          <p
-            key={i + "pls"}
-            className="arabic-word-s"
-            style={{ display: "inline-block", margin: "0.3rem" }}
-          >
-            {r.arabic_pl[i]} ({r.translit_pl[i]}),{" "}
-          </p>
-        ))}
-      </div>
+      {r.arabic_pl.length > 0 && (
+        <div>
+          pl.{" "}
+          {r.arabic_pl.map((w, i) => (
+            <p
+              key={i + "pls"}
+              className="arabic-word-s"
+              style={{ display: "inline-block", margin: "0.3rem" }}
+            >
+              {r.arabic_pl[i]} ({r.translit_pl[i]}),{" "}
+            </p>
+          ))}
+        </div>
+      )}
       <p style={{ fontSize: "0.8rem" }}>
         <a
           target="blank"
@@ -117,25 +69,6 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           Escuchar pronunciación
         </a>
       </p>
-      <div>
-        {r.phrase?.arabic && <h4>Ejemplos de uso</h4>}
-        <p className="arabic-word-s">{r.phrase.arabic}</p>
-        <p>{r.phrase.translit}</p>
-        <p>{r.phrase.meaning}</p>
-        {r.phrase?.reference ? (
-          <p style={{ fontSize: "0.7rem" }}>Fuente: {r.phrase.reference}</p>
-        ) : (
-          ""
-        )}
-        <p style={{ fontSize: "0.8rem" }}>
-          <a
-            target="blank"
-            href={`https://translate.google.com/?sl=ar&tl=en&text=${r.phrase.arabic}&op=translate`}
-          >
-            Escuchar pronunciación
-          </a>
-        </p>
-      </div>
     </div>
   );
 
@@ -151,10 +84,10 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           noun: r.noun,
           form: r.form,
           synonim: r.synonim,
-          control: r.control,
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}
+      <TextInstances r={r} />
       {r.foreign && (
         <div>
           <h6>Etimología del vocablo</h6>
