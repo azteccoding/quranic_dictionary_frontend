@@ -11,6 +11,9 @@ const ColorTags = ({ tags }) => {
   const noun = tags.noun && (
     <span className="badge text-bg-primary">Sustantivo</span>
   );
+  const adjetive = tags.adjetive && (
+    <span className="badge bg-brown">Adjetivo</span>
+  );
   const verb = tags.verb && (
     <span className="badge text-bg-success">Verbo</span>
   );
@@ -32,6 +35,7 @@ const ColorTags = ({ tags }) => {
   return (
     <div style={{ margin: "1rem" }}>
       {noun}
+      {adjetive}
       {wordGender()}
       {verb}
       {nounInflection}

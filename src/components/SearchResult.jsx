@@ -81,6 +81,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           pl_diptote: r.pl_diptote,
           foreign: r.foreign,
           verb: r.verb,
+          adjetive: r.adjetive,
           noun: r.noun,
           form: r.form,
           synonim: r.synonim,
