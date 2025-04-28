@@ -82,6 +82,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           foreign: r.foreign,
           verb: r.verb,
           adjetive: r.adjetive,
+          adverb: r.adverb,
           noun: r.noun,
           form: r.form,
           synonim: r.synonim,

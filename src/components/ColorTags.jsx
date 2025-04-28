@@ -2,10 +2,12 @@ const ColorTags = ({ tags }) => {
   const wordGender = () => {
     const backgroundStyle = tags.masculine ? "text-bg-secondary" : "bg-pink";
 
-    return (
+    return tags.noun ? (
       <span className={`badge ${backgroundStyle}`}>
         {tags.masculine ? "Masculino" : "Femenino"}
       </span>
+    ) : (
+      ""
     );
   };
   const noun = tags.noun && (
@@ -13,6 +15,9 @@ const ColorTags = ({ tags }) => {
   );
   const adjetive = tags.adjetive && (
     <span className="badge bg-brown">Adjetivo</span>
+  );
+  const adverb = tags.adverb && (
+    <span className="badge bg-purple">Adverbio</span>
   );
   const verb = tags.verb && (
     <span className="badge text-bg-success">Verbo</span>
@@ -36,6 +41,7 @@ const ColorTags = ({ tags }) => {
     <div style={{ margin: "1rem" }}>
       {noun}
       {adjetive}
+      {adverb}
       {wordGender()}
       {verb}
       {nounInflection}
