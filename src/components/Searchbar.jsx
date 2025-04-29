@@ -122,7 +122,7 @@ const Searchbar = () => {
         ? queryResult.map((word) => (
             <SearchResult arabSearch={arab2EspSelected} queryResult={word} />
           ))
-        : ""}
+        : null}
       {wordNotFoundInDictionary && !isLoading
         ? "Esa palabra aun no se encuentra en el diccionario"
         : ""}

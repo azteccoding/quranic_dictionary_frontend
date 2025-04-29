@@ -1,4 +1,5 @@
 import ColorTags from "./ColorTags";
+import ExtraMeaning from "./ExtraMeaning";
 import TextInstances from "./TextInstances";
 
 const SearchResult = ({ arabSearch, queryResult: r }) => {
@@ -28,6 +29,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           </p>
         ))}
       </div>
+      <ExtraMeaning additionals={r.additionals} />
       <div style={{ margin: "1rem" }}></div>
     </div>
   );
@@ -69,6 +71,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           Escuchar pronunciación
         </a>
       </p>
+      <ExtraMeaning additionals={r.additionals} />
     </div>
   );
 
