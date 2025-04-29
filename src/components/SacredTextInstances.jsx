@@ -1,4 +1,4 @@
-const TextInstances = ({ r }) => {
+const SacredTextInstances = ({ r }) => {
   return (
     <>
       {r.quranic_appear?.appearance && (
@@ -61,4 +61,4 @@ const TextInstances = ({ r }) => {
   );
 };
 
-export default TextInstances;
+export default SacredTextInstances;
