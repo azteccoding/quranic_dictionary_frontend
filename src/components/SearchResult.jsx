@@ -29,8 +29,6 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           </p>
         ))}
       </div>
-      <ExtraMeaning additionals={r.additionals} />
-      <div style={{ margin: "1rem" }}></div>
     </div>
   );
 
@@ -71,7 +69,6 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           Escuchar pronunciación
         </a>
       </p>
-      <ExtraMeaning additionals={r.additionals} />
     </div>
   );
 
@@ -92,6 +89,7 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}
+      {r.additionals ? <ExtraMeaning additionals={r.additionals} /> : null}
       <TextInstances r={r} />
       {r.foreign && (
         <div>
