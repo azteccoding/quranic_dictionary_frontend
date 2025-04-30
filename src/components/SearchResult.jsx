@@ -44,7 +44,8 @@ const SearchResult = ({ arabSearch, queryResult: r, searchSynonym }) => {
             key={i + "pls"}
             style={{ display: "inline-block", margin: "0.3rem" }}
           >
-            {w} {","}
+            {w}
+            {r.spanish?.length > 1 && ","}
           </p>
         ))}
       </h2>

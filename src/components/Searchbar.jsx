@@ -103,7 +103,9 @@ const Searchbar = () => {
           data-toggle="buttons"
         >
           <label className="btn">Buscar palabra en</label>
-          <label className="btn btn-secondary">
+          <label
+            className={`btn btn-secondary ${arab2EspSelected && "active"}`}
+          >
             <input
               type="radio"
               name="options"
@@ -114,7 +116,9 @@ const Searchbar = () => {
             />{" "}
             árabe coránico
           </label>
-          <label className="btn btn-secondary">
+          <label
+            className={`btn btn-secondary ${!arab2EspSelected && "active"}`}
+          >
             <input
               type="radio"
               name="options"
