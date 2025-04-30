@@ -18,6 +18,7 @@ const Searchbar = () => {
 
   useEffect(() => {
     setIsLoading(false);
+    setSynonymSearched(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
   }, [arab2EspSelected, searchActive, searchWord, synonymSearched]);
 
@@ -66,7 +67,7 @@ const Searchbar = () => {
   const searchSynonym = async (p) => {
     setArab2EspSelected(true);
     setSearchTitle(arab2EspTitle);
-    // setIsLoading(true);
+    setIsLoading(true);
 
     const { data } = await findInDictionary(p, true);
 
@@ -137,6 +138,7 @@ const Searchbar = () => {
           <input
             type="search"
             id="gsearch"
+            autoFocus
             className="form-control mobile-input-lg"
             aria-label="default input example"
             name="gsearch"
