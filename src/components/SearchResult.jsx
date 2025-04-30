@@ -1,8 +1,9 @@
 import ColorTags from "./ColorTags";
 import ExtraMeaning from "./ExtraMeaning";
 import SacredTextInstances from "./SacredTextInstances";
+import SearchSynonyms from "./SearchSynonyms";
 
-const SearchResult = ({ arabSearch, queryResult: r }) => {
+const SearchResult = ({ arabSearch, queryResult: r, searchSynonym }) => {
   const ArabicSearch = r?.arabic_sg && (
     <div>
       <h2 className="arabic-word-xxl">{r.arabic_sg} </h2>
@@ -21,7 +22,10 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
           ))}
         </div>
       )}
-      <div className="arabic-word-xs" style={{ paddingTop: "1rem" }}>
+      <div
+        className="arabic-word-xs"
+        style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}
+      >
         Traducción:{" "}
         {r.spanish.map((i) => (
           <p key={i + "p"} style={{ display: "inline", margin: "0.3rem" }}>
@@ -91,6 +95,9 @@ const SearchResult = ({ arabSearch, queryResult: r }) => {
       {arabSearch ? ArabicSearch : SpanishSearch}
       {r.additionals && <ExtraMeaning additionals={r.additionals} />}
       <SacredTextInstances r={r} />
+      {r.synonim?.length > 0 && (
+        <SearchSynonyms searchSynonym={searchSynonym} synonyms={r.synonim} />
+      )}
       {r.foreign && (
         <div>
           <h6>Etimología del vocablo</h6>

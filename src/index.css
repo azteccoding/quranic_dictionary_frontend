@@ -32,6 +32,13 @@ body {
   padding-bottom: 2rem;
 }
 
+.synonym {
+  display: inline;
+  margin: 0.3rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
+
 .spacing-width {
   margin: 1rem;
   padding-left: 8rem;

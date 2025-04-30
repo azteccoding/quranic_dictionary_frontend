@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // import { mockDBQuery } from "../mocks/mockDBQuery";
 import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
+import { useRef } from "react";
 
 const Searchbar = () => {
   const arab2EspTitle = "Árabe coránico - Español";
@@ -14,21 +15,22 @@ const Searchbar = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [queryResult, setQueryResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [synonymSearched, setSynonymSearched] = useState(false);
 
   useEffect(() => {
     setIsLoading(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
-  }, [arab2EspSelected, searchActive, searchWord]);
+  }, [arab2EspSelected, searchActive, searchWord, synonymSearched]);
 
   function handleInput(event) {
     setSearchWord(event.target.value);
   }
 
-  function handleToggle() {
+  function handleLanguageChange(toArabic) {
     setSearchActive(false);
     setSearchWord("");
     setQueryResult("");
-    setArab2EspSelected(!arab2EspSelected);
+    setArab2EspSelected(toArabic);
     setWordNotFoundInDictionary(false);
   }
 
@@ -59,45 +61,84 @@ const Searchbar = () => {
       setSearchWord("");
       setSearchActive(true);
     }
+    setIsLoading(false);
   }
+
+  const searchSynonym = async (p) => {
+    setArab2EspSelected(true);
+    setSearchTitle(arab2EspTitle);
+    // setIsLoading(true);
+
+    const { data } = await findInDictionary(p, true);
+
+    try {
+      if (data?.data?.length) {
+        const res = data.data;
+        setQueryResult(res);
+        setWordNotFoundInDictionary(false);
+      } else {
+        setQueryResult([]);
+        console.log("No data for that word: " + searchWord);
+        setWordNotFoundInDictionary(true);
+      }
+    } catch (error) {
+      console.log("======ERROR FETCHING SYNONYMS=======");
+      console.log(error);
+      console.log("====================================");
+    }
+
+    setSearchWord("");
+    setSearchActive(true);
+    setSynonymSearched(true);
+  };
 
   return (
     <>
       <div>
         <h1 style={{ paddingTop: "3rem" }}>Diccionario {searchTitle}</h1>
 
-        <div className="spacing-width">
-          <div className="form-check form-switch ">
+        <div
+          style={{ paddingTop: "1.8rem", paddingBottom: "1.3rem" }}
+          className="btn-group btn-group-toggle"
+          data-toggle="buttons"
+        >
+          <label className="btn">Buscar palabra en</label>
+          <label className="btn btn-secondary">
             <input
-              class="form-check-input switch-mobile"
-              type="checkbox"
-              role="switch"
-              onChange={handleToggle}
-              id="switchCheckDefault"
-            />
-
-            <label
-              class="form-check-label label-mobile"
-              for="switchCheckDefault"
-            >
-              Buscar palabra en{" "}
-              {arab2EspSelected ? "árabe coránico" : "español"}
-            </label>
-          </div>
+              type="radio"
+              name="options"
+              id="option1"
+              autoComplete="off"
+              checked={arab2EspSelected}
+              onChange={() => handleLanguageChange(true)}
+            />{" "}
+            árabe coránico
+          </label>
+          <label className="btn btn-secondary">
+            <input
+              type="radio"
+              name="options"
+              id="option2"
+              autoComplete="off"
+              checked={!arab2EspSelected}
+              onChange={() => handleLanguageChange(false)}
+            />{" "}
+            español
+          </label>
         </div>
 
         <form
-          class="row g-2 align-items-center form-field"
+          className="row g-2 align-items-center form-field"
           style={{ padding: "1rem 9rem" }}
           onSubmit={handleSubmit}
         >
-          <label for="gsearch" class="form-label">
+          <label htmlFor="gsearch" className="form-label">
             Buscar
           </label>
           <input
             type="search"
             id="gsearch"
-            class="form-control mobile-input-lg"
+            className="form-control mobile-input-lg"
             aria-label="default input example"
             name="gsearch"
             placeholder={arab2EspSelected ? "كتاب" : "libro"}
@@ -105,12 +146,12 @@ const Searchbar = () => {
             value={searchWord}
           />
 
-          <input type="submit" class="btn btn-primary mb-4 btn-lg" />
+          <input type="submit" className="btn btn-primary mb-4 btn-lg" />
         </form>
       </div>
       {isLoading && (
-        <div class="spinner-grow" role="status">
-          <span class="sr-only"></span>
+        <div className="spinner-grow" role="status">
+          <span className="sr-only"></span>
         </div>
       )}
       {queryResult?.length > 0 && (
@@ -120,7 +161,12 @@ const Searchbar = () => {
       )}
       {searchActive && !wordNotFoundInDictionary && !isLoading
         ? queryResult.map((word) => (
-            <SearchResult arabSearch={arab2EspSelected} queryResult={word} />
+            <SearchResult
+              key={word.english}
+              searchSynonym={searchSynonym}
+              arabSearch={arab2EspSelected}
+              queryResult={word}
+            />
           ))
         : null}
       {wordNotFoundInDictionary && !isLoading
