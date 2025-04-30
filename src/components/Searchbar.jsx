@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 // import { mockDBQuery } from "../mocks/mockDBQuery";
 import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
-import { useRef } from "react";
 
 const Searchbar = () => {
   const arab2EspTitle = "Árabe coránico - Español";
