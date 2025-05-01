@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { mockDBQuery } from "../mocks/mockDBQuery";
 import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
