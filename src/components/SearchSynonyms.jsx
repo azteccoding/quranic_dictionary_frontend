@@ -5,7 +5,7 @@ const SearchSynonyms = (props) => {
       {props.synonyms.map((syn) => (
         <p
           className="synonym arabic-word-s"
-          onClick={() => props.searchSynonym(syn)}
+          onClick={() => props.searchWordManually(syn)}
         >
           {syn}
         </p>

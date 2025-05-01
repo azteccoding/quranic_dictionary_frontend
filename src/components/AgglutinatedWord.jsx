@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const AgglutinatedWord = ({ word, handleDeleteAgglutinate }) => {
+const AgglutinatedWord = ({
+  word,
+  handleDeleteAgglutinate,
+  searchWordManually,
+}) => {
   const [show, setShow] = useState(false);
 
   const showContent = () => {
@@ -29,8 +33,9 @@ const AgglutinatedWord = ({ word, handleDeleteAgglutinate }) => {
               data-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
+              onClick={() => searchWordManually(word.arabic_sg)}
             >
-              {word.arabic_sg}
+              <span className="arabic-word-s">{word.arabic_sg}</span>
             </button>
           </h2>
         </div>

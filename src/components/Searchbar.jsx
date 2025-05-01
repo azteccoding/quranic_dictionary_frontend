@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 // import { mockDBQuery } from "../mocks/mockDBQuery";
 import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
@@ -17,6 +17,8 @@ const Searchbar = () => {
   const [queryResult, setQueryResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [synonymSearched, setSynonymSearched] = useState(false);
+  const inputReference = useRef(null);
+  const agglutinatedRef = useRef(null);
 
   useEffect(() => {
     const agglutinatedInLocal =
@@ -26,9 +28,18 @@ const Searchbar = () => {
   }, []);
 
   useEffect(() => {
+    agglutinatedRef.current.scrollIntoView({ behavior: "smooth" });
+    console.log("====================================");
+    console.log("no funciona");
+    console.log("====================================");
+  }, [agglutinatedWords]);
+
+  useEffect(() => {
     setIsLoading(false);
     setSynonymSearched(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
+
+    inputReference.current.focus();
   }, [arab2EspSelected, searchActive, searchWord, synonymSearched]);
 
   function handleInput(event) {
@@ -37,6 +48,7 @@ const Searchbar = () => {
 
   function handleAgglutinate(word) {
     const wordContent = {
+      id: Math.random().toString(16).slice(2),
       spanish: word.spanish,
       arabic_sg: word.arabic_sg,
       arabic_pl: word.arabic_pl,
@@ -54,7 +66,7 @@ const Searchbar = () => {
 
   function handleDeleteAgglutinate(word) {
     let updater = JSON.parse(JSON.stringify(agglutinatedWords));
-    const updatedLocal = updater.filter((w) => word.arabic_sg !== w.arabic_sg);
+    const updatedLocal = updater.filter((w) => word.id !== w.id);
     setAgglutinatedWords(updatedLocal);
 
     localStorage.setItem("agglutinate", JSON.stringify(agglutinatedWords));
@@ -98,7 +110,7 @@ const Searchbar = () => {
     setIsLoading(false);
   }
 
-  const searchSynonym = async (p) => {
+  const searchWordManually = async (p) => {
     setArab2EspSelected(true);
     setSearchTitle(arab2EspTitle);
     setIsLoading(true);
@@ -180,6 +192,7 @@ const Searchbar = () => {
             className="form-control mobile-input-lg"
             aria-label="default input example"
             name="gsearch"
+            ref={inputReference}
             placeholder={arab2EspSelected ? "كتاب" : "libro"}
             onChange={handleInput}
             value={searchWord}
@@ -202,7 +215,7 @@ const Searchbar = () => {
         ? queryResult.map((word) => (
             <SearchResult
               key={word.english}
-              searchSynonym={searchSynonym}
+              searchWordManually={searchWordManually}
               arabSearch={arab2EspSelected}
               queryResult={word}
               handleAgglutinate={handleAgglutinate}
@@ -216,12 +229,16 @@ const Searchbar = () => {
         {"Investigación y programación por Khalid Jorge"}
       </div>
       {queryResult?.length === 0 && <div className="bottom-filler"></div>}
-      {agglutinatedWords.map((word) => (
-        <AgglutinatedWord
-          handleDeleteAgglutinate={handleDeleteAgglutinate}
-          word={word}
-        />
-      ))}
+      <div ref={agglutinatedRef}>
+        {agglutinatedWords.map((word, i) => (
+          <AgglutinatedWord
+            key={"agg" + i}
+            searchWordManually={searchWordManually}
+            handleDeleteAgglutinate={handleDeleteAgglutinate}
+            word={word}
+          />
+        ))}
+      </div>
     </>
   );
 };

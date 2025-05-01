@@ -8,6 +8,7 @@ const SearchResult = ({
   queryResult: r,
   searchSynonym,
   handleAgglutinate,
+  searchWordManually,
 }) => {
   const ArabicSearch = r?.arabic_sg && (
     <div>
@@ -110,7 +111,10 @@ const SearchResult = ({
       {r.additionals && <ExtraMeaning additionals={r.additionals} />}
       <SacredTextInstances r={r} />
       {r.synonim?.length > 0 && (
-        <SearchSynonyms searchSynonym={searchSynonym} synonyms={r.synonim} />
+        <SearchSynonyms
+          searchWordManually={searchWordManually}
+          synonyms={r.synonim}
+        />
       )}
       {r.foreign && (
         <div>
