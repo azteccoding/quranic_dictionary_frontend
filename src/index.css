@@ -9,18 +9,51 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
 .background {
   background-color: #fffceb;
 }
 
+.bg-pink {
+  background-color: #f78da7 !important;
+}
+
+.bg-brown {
+  background-color: #cd853f !important;
+}
+
+.bg-purple {
+  background-color: #8244eb !important;
+}
+
 .bottom-filler {
-  padding-bottom: 9rem;
+  padding-bottom: 0rem;
+}
+
+.close-top-right {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.3rem;
+  color: #888;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.close-top-right:hover {
+  color: #000;
+}
+
+.card-header.position-relative {
+  position: relative; /* ensures absolute positioning is based on this */
 }
 
 .footer {
-  padding-top: 1rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
   font-size: 0.5rem;
 }
 
@@ -30,6 +63,19 @@ body {
   font-style: normal;
   padding-top: 1rem;
   padding-bottom: 2rem;
+}
+
+.side-lefts {
+  margin-left: 20rem;
+}
+
+.side-right {
+  margin-left: 18rem;
+}
+
+.box-container {
+  padding: 0 10rem;
+  text-align: left !important;
 }
 
 .synonym {
@@ -45,6 +91,10 @@ body {
   margin: 1rem;
   padding-left: 8rem;
   text-align: left;
+}
+
+.arabic-word-3xs {
+  font-size: 0.7rem;
 }
 
 .arabic-word-xxs {
@@ -102,12 +152,35 @@ body {
   }
 
   .bottom-filler {
-    padding-bottom: 16rem;
+    padding-bottom: 12rem;
+  }
+
+  .inline-text {
+    all: unset; /* remove all default styles */
+    display: inline;
+    cursor: pointer;
+    font-size: 1.2rem; /* match surrounding text */
+    margin-left: 0.5rem;
+    line-height: 1;
+    color: #007bff; /* Bootstrap link color */
+  }
+
+  .side-left {
+    margin-left: 20rem;
+  }
+
+  .side-right {
+    margin-left: 7rem;
+  }
+
+  .box-container {
+    padding: 0 2rem;
+    text-align: left !important;
   }
 }
 
 @media (min-height: 768px) {
   .bottom-filler {
-    padding-bottom: 36rem;
+    padding-bottom: 30rem;
   }
 }

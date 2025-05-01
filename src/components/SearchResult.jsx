@@ -3,7 +3,12 @@ import ExtraMeaning from "./ExtraMeaning";
 import SacredTextInstances from "./SacredTextInstances";
 import SearchSynonyms from "./SearchSynonyms";
 
-const SearchResult = ({ arabSearch, queryResult: r, searchSynonym }) => {
+const SearchResult = ({
+  arabSearch,
+  queryResult: r,
+  searchSynonym,
+  handleAgglutinate,
+}) => {
   const ArabicSearch = r?.arabic_sg && (
     <div>
       <h2 className="arabic-word-xxl">{r.arabic_sg} </h2>
@@ -93,6 +98,14 @@ const SearchResult = ({ arabSearch, queryResult: r, searchSynonym }) => {
           synonim: r.synonim,
         }}
       />
+      <button
+        type="button"
+        title="Guarda esta palabra y sigue buscando más"
+        className="btn btn-outline-success inline-text"
+        onClick={() => handleAgglutinate(r)}
+      >
+        Aglutinar
+      </button>
       {arabSearch ? ArabicSearch : SpanishSearch}
       {r.additionals && <ExtraMeaning additionals={r.additionals} />}
       <SacredTextInstances r={r} />
@@ -105,21 +118,6 @@ const SearchResult = ({ arabSearch, queryResult: r, searchSynonym }) => {
           <p>{r.etymology}</p>
         </div>
       )}
-      <footer className="footer">
-        <p>Fuentes:</p>
-        <p>
-          Badawi, E. M., & Abdel Haleem, M. (2008). Arabic-English dictionary of
-          Qur'anic usage. Brill.
-        </p>
-        <p>
-          Corriente Córdoba, F. (2005). Diccionario árabe-español: Texto,
-          gramática y cultura (1.ª ed.). Herder.
-        </p>
-        <p>
-          Hans Wehr & J. Milton Cowan (2020). A Dictionary of Modern Written
-          Arabic (4ª ed.). BN Publishing
-        </p>
-      </footer>
     </>
   );
 };

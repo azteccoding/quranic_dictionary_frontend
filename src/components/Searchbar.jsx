@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 // import { mockDBQuery } from "../mocks/mockDBQuery";
 import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
+import AgglutinatedWord from "./AgglutinatedWord";
 
 const Searchbar = () => {
+  const [agglutinatedWords, setAgglutinatedWords] = useState([]);
   const arab2EspTitle = "Árabe coránico - Español";
   const esp2ArabTitle = "Español - Árabe coránico";
   const [wordNotFoundInDictionary, setWordNotFoundInDictionary] =
@@ -17,6 +19,13 @@ const Searchbar = () => {
   const [synonymSearched, setSynonymSearched] = useState(false);
 
   useEffect(() => {
+    const agglutinatedInLocal =
+      JSON.parse(localStorage.getItem("agglutinate")) || [];
+
+    setAgglutinatedWords(agglutinatedInLocal);
+  }, []);
+
+  useEffect(() => {
     setIsLoading(false);
     setSynonymSearched(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
@@ -24,6 +33,31 @@ const Searchbar = () => {
 
   function handleInput(event) {
     setSearchWord(event.target.value);
+  }
+
+  function handleAgglutinate(word) {
+    const wordContent = {
+      spanish: word.spanish,
+      arabic_sg: word.arabic_sg,
+      arabic_pl: word.arabic_pl,
+      translit_sg: word.translit_sg,
+      translit_pl: word.translit_pl,
+    };
+
+    let updater = JSON.parse(JSON.stringify(agglutinatedWords));
+    updater.push(wordContent);
+
+    setAgglutinatedWords(updater);
+
+    localStorage.setItem("agglutinate", JSON.stringify(agglutinatedWords));
+  }
+
+  function handleDeleteAgglutinate(word) {
+    let updater = JSON.parse(JSON.stringify(agglutinatedWords));
+    const updatedLocal = updater.filter((w) => word.arabic_sg !== w.arabic_sg);
+    setAgglutinatedWords(updatedLocal);
+
+    localStorage.setItem("agglutinate", JSON.stringify(agglutinatedWords));
   }
 
   function handleLanguageChange(toArabic) {
@@ -171,6 +205,7 @@ const Searchbar = () => {
               searchSynonym={searchSynonym}
               arabSearch={arab2EspSelected}
               queryResult={word}
+              handleAgglutinate={handleAgglutinate}
             />
           ))
         : null}
@@ -181,6 +216,12 @@ const Searchbar = () => {
         {"Investigación y programación por Khalid Jorge"}
       </div>
       {queryResult?.length === 0 && <div className="bottom-filler"></div>}
+      {agglutinatedWords.map((word) => (
+        <AgglutinatedWord
+          handleDeleteAgglutinate={handleDeleteAgglutinate}
+          word={word}
+        />
+      ))}
     </>
   );
 };
