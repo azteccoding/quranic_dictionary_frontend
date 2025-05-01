@@ -40,6 +40,7 @@ const Searchbar = () => {
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
 
     inputReference.current.focus();
+    inputReference.current.scrollIntoView({ behavior: "smooth" });
   }, [arab2EspSelected, searchActive, searchWord, synonymSearched]);
 
   function handleInput(event) {
