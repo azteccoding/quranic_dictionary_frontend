@@ -29,9 +29,6 @@ const Searchbar = () => {
 
   useEffect(() => {
     agglutinatedRef.current.scrollIntoView({ behavior: "smooth" });
-    console.log("====================================");
-    console.log("no funciona");
-    console.log("====================================");
   }, [agglutinatedWords]);
 
   useEffect(() => {
@@ -114,6 +111,7 @@ const Searchbar = () => {
   const searchWordManually = async (p) => {
     setArab2EspSelected(true);
     setSearchTitle(arab2EspTitle);
+    setWordNotFoundInDictionary(false);
     setIsLoading(true);
 
     const { data } = await findInDictionary(p, true);
@@ -207,7 +205,7 @@ const Searchbar = () => {
           <span className="sr-only"></span>
         </div>
       )}
-      {queryResult?.length > 0 && (
+      {queryResult?.length > 0 && !isLoading && (
         <p>
           {queryResult.length} coincidencia{queryResult.length > 1 ? "s" : ""}
         </p>
