@@ -19,6 +19,7 @@ const Searchbar = () => {
   const [synonymSearched, setSynonymSearched] = useState(false);
   const inputReference = useRef(null);
   const agglutinatedRef = useRef(null);
+  const toggleRef = useRef(false);
 
   useEffect(() => {
     const agglutinatedInLocal =
@@ -36,12 +37,16 @@ const Searchbar = () => {
     setSynonymSearched(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
 
-    inputReference.current.focus();
-    inputReference.current.scrollIntoView({ behavior: "smooth" });
+    if (toggleRef.current) {
+      inputReference.current.focus();
+      inputReference.current.scrollIntoView({ behavior: "smooth" });
+    }
+    toggleRef.current = true;
   }, [arab2EspSelected, searchActive, searchWord, synonymSearched]);
 
   function handleInput(event) {
     setSearchWord(event.target.value);
+    toggleRef.current = false;
   }
 
   function handleAgglutinate(word) {
@@ -76,6 +81,7 @@ const Searchbar = () => {
     setQueryResult("");
     setArab2EspSelected(toArabic);
     setWordNotFoundInDictionary(false);
+    toggleRef.current = false;
   }
 
   async function handleSubmit(event) {
