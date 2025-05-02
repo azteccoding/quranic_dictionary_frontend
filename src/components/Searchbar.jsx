@@ -19,6 +19,7 @@ const Searchbar = () => {
   const [synonymSearched, setSynonymSearched] = useState(false);
   const inputReference = useRef(null);
   const agglutinatedRef = useRef(null);
+  const isFirstRender = useRef(true);
   const toggleRef = useRef(false);
 
   useEffect(() => {
@@ -29,7 +30,9 @@ const Searchbar = () => {
   }, []);
 
   useEffect(() => {
-    agglutinatedRef.current.scrollIntoView({ behavior: "smooth" });
+    if (!isFirstRender.current) {
+      agglutinatedRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   }, [agglutinatedWords]);
 
   useEffect(() => {
@@ -37,16 +40,18 @@ const Searchbar = () => {
     setSynonymSearched(false);
     setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
 
-    if (toggleRef.current) {
+    if (toggleRef.current && !isFirstRender.current) {
       inputReference.current.focus();
       inputReference.current.scrollIntoView({ behavior: "smooth" });
     }
+
     toggleRef.current = true;
   }, [arab2EspSelected, searchActive, searchWord, synonymSearched]);
 
   function handleInput(event) {
     setSearchWord(event.target.value);
     toggleRef.current = false;
+    isFirstRender.current = false;
   }
 
   function handleAgglutinate(word) {
@@ -64,7 +69,7 @@ const Searchbar = () => {
 
     setAgglutinatedWords(updater);
 
-    localStorage.setItem("agglutinate", JSON.stringify(agglutinatedWords));
+    localStorage.setItem("agglutinate", JSON.stringify(updater));
   }
 
   function handleDeleteAgglutinate(word) {
@@ -72,7 +77,13 @@ const Searchbar = () => {
     const updatedLocal = updater.filter((w) => word.id !== w.id);
     setAgglutinatedWords(updatedLocal);
 
-    localStorage.setItem("agglutinate", JSON.stringify(agglutinatedWords));
+    if (updatedLocal.length === 0) {
+      isFirstRender.current = true;
+      localStorage.clear();
+      return;
+    }
+
+    localStorage.setItem("agglutinate", JSON.stringify(updatedLocal));
   }
 
   function handleLanguageChange(toArabic) {
@@ -193,7 +204,6 @@ const Searchbar = () => {
           <input
             type="search"
             id="gsearch"
-            autoFocus
             className="form-control mobile-input-lg"
             aria-label="default input example"
             name="gsearch"
