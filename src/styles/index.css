@@ -177,10 +177,27 @@ body {
     padding: 0 2rem;
     text-align: left !important;
   }
+
+  .arabic-word-xs,
+  .arabic-word-s {
+    font-size: 1.9rem;
+  }
+
+  .arabic-word-3xs {
+    font-size: 1rem;
+  }
 }
 
 @media (min-height: 768px) {
   .bottom-filler {
     padding-bottom: 30rem;
+  }
+
+  .arabic-word-3xs {
+    font-size: 1rem;
+  }
+
+  .arabic-word-s {
+    font-size: 1.7rem;
   }
 }
