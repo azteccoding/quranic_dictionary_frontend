@@ -43,7 +43,12 @@ const SacredTextInstances = ({ r }) => {
           <p>{r.phrase.translit}</p>
           <p>{r.phrase.meaning}</p>
           {r.phrase?.reference ? (
-            <p style={{ fontSize: "0.7rem" }}>Fuente: {r.phrase.reference}</p>
+            <p style={{ fontSize: "0.7rem" }}>
+              Fuente:{" "}
+              <a target="blank" href={r.phrase.link}>
+                {r.phrase.reference}
+              </a>
+            </p>
           ) : (
             ""
           )}
