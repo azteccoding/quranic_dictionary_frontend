@@ -12,6 +12,38 @@ body {
   text-align: center;
 }
 
+.arabic-word-3xs {
+  font-size: 0.7rem;
+}
+
+.arabic-word-xxs {
+  font-size: 1rem;
+}
+
+.arabic-word-xs {
+  font-size: 1.4rem;
+}
+
+.arabic-word-s {
+  font-size: 1.6rem;
+}
+
+.arabic-word-m {
+  font-size: 1.8rem;
+}
+
+.arabic-word-l {
+  font-size: 1.9rem;
+}
+
+.arabic-word-xl {
+  font-size: 2.1rem;
+}
+
+.arabic-word-xxl {
+  font-size: 2.3rem;
+}
+
 .background {
   background-color: #fffceb;
 }
@@ -93,36 +125,11 @@ body {
   text-align: left;
 }
 
-.arabic-word-3xs {
-  font-size: 0.7rem;
-}
-
-.arabic-word-xxs {
-  font-size: 1rem;
-}
-
-.arabic-word-xs {
-  font-size: 1.4rem;
-}
-
-.arabic-word-s {
-  font-size: 1.6rem;
-}
-
-.arabic-word-m {
-  font-size: 1.8rem;
-}
-
-.arabic-word-l {
-  font-size: 1.9rem;
-}
-
-.arabic-word-xl {
-  font-size: 2.1rem;
-}
-
-.arabic-word-xxl {
-  font-size: 2.3rem;
+.result {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 768px) {

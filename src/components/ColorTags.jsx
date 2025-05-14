@@ -19,6 +19,9 @@ const ColorTags = ({ tags }) => {
   const adverb = tags.adverb && (
     <span className="badge bg-purple">Adverbio</span>
   );
+  const preposition = tags.preposition && (
+    <span className="badge bg-purple">Preposición</span>
+  );
   const verb = tags.verb && (
     <span className="badge text-bg-success">Verbo</span>
   );

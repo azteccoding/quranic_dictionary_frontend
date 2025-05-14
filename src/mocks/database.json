@@ -25,7 +25,8 @@
     "arabic": "الصلاة جائزة في البيع والكنائس والبيت من بيوت النيران والبيوت البدّ",
     "meaning": "El salat está permitido en las sinagogas, iglesias y casas de fuego y casas de ídolos",
     "reference": "Ibn Hazm. Muhalla, vol. 2 pág.136-7",
-    "translit": "aṣ-ṣalātu jā'izatun fi l-biyaʿi wa l-kanā'isi wa l-bayti min buyūti an-nīrān wa buyūti l-buddi"
+    "translit": "aṣ-ṣalātu jā'izatun fi l-biyaʿi wa l-kanā'isi wa l-bayti min buyūti an-nīrān wa buyūti l-buddi",
+    "link": ""
   },
   "dipote": false,
   "foreign": false,
@@ -33,6 +34,9 @@
   "synonim": "",
   "antonym": "",
   "noun": true,
+  "adjetive": false,
+  "adverb": false,
+  "preposition": false,
   "verb": false,
   "masculine": true,
   "form": ""

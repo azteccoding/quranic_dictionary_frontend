@@ -84,7 +84,7 @@ const SearchResult = ({
   );
 
   return (
-    <>
+    <div className="result">
       <ColorTags
         tags={{
           masculine: r.masculine,
@@ -93,6 +93,7 @@ const SearchResult = ({
           foreign: r.foreign,
           verb: r.verb,
           adjetive: r.adjetive,
+          preposition: r.preposition,
           adverb: r.adverb,
           noun: r.noun,
           form: r.form,
@@ -122,7 +123,7 @@ const SearchResult = ({
           <p>{r.etymology}</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
