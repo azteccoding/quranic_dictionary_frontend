@@ -44,6 +44,7 @@ const ColorTags = ({ tags }) => {
     <div style={{ margin: "1rem" }}>
       {noun}
       {adjetive}
+      {preposition}
       {adverb}
       {wordGender()}
       {verb}
