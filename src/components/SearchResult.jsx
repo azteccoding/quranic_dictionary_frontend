@@ -85,6 +85,14 @@ const SearchResult = ({
 
   return (
     <div className="result">
+      <button
+        type="button"
+        title="Guarda esta palabra y sigue buscando más"
+        className="btn btn-outline-success inline-text"
+        onClick={() => handleAgglutinate(r)}
+      >
+        Aglutinar
+      </button>
       <ColorTags
         tags={{
           masculine: r.masculine,
@@ -100,14 +108,6 @@ const SearchResult = ({
           synonim: r.synonim,
         }}
       />
-      <button
-        type="button"
-        title="Guarda esta palabra y sigue buscando más"
-        className="btn btn-outline-success inline-text"
-        onClick={() => handleAgglutinate(r)}
-      >
-        Aglutinar
-      </button>
       {arabSearch ? ArabicSearch : SpanishSearch}
       {r.additionals && <ExtraMeaning additionals={r.additionals} />}
       <SacredTextInstances r={r} />
