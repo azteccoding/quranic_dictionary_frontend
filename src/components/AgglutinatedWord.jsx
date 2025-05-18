@@ -77,6 +77,37 @@ const AgglutinatedWord = ({
                 </p>
               ))}
             </div>
+            {word.isVerb && (
+              <div
+                className="arabic-word-xxs"
+                style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}
+              >
+                <p className="arabic-word-xxs verb-p">
+                  Raíz: {word.conjugation.root}
+                </p>
+                <p className="arabic-word-xxs verb-p">
+                  Vocal de imperfectivo:{" "}
+                  <span style={{ fontWeight: "bold" }}>
+                    {word.conjugation.imperfect_vowel}
+                  </span>
+                </p>
+                <br />
+                <p className="arabic-word-xxs verb-p">
+                  Sustantivo verbal: {word.conjugation.masdar}{" "}
+                  {word.conjugation.masdar_translit}{" "}
+                  {word.conjugation.masdar_meaning}
+                </p>
+                {word.irregular && (
+                  <>
+                    <br />
+                    <p className="arabic-word-xxs verb-p">
+                      Perfectivo 1ra sing.: {word.conjugation.perfect1}{" "}
+                      {word.conjugation.perfect1_translit}
+                    </p>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

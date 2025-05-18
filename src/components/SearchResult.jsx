@@ -2,6 +2,7 @@ import ColorTags from "./ColorTags";
 import ExtraMeaning from "./ExtraMeaning";
 import SacredTextInstances from "./SacredTextInstances";
 import SearchSynonyms from "./SearchSynonyms";
+import VerbConjugation from "./VerbConjugation";
 
 const SearchResult = ({
   arabSearch,
@@ -109,6 +110,7 @@ const SearchResult = ({
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}
+      {<VerbConjugation props={r.conjugation} />}
       {r.additionals && <ExtraMeaning additionals={r.additionals} />}
       <SacredTextInstances r={r} />
       {r.synonim?.length > 0 && (

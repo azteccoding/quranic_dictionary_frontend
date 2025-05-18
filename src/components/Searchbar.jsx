@@ -55,6 +55,8 @@ const Searchbar = () => {
   }
 
   function handleAgglutinate(word) {
+    console.log(word);
+
     const wordContent = {
       id: Math.random().toString(16).slice(2),
       spanish: word.spanish,
@@ -62,6 +64,8 @@ const Searchbar = () => {
       arabic_pl: word.arabic_pl,
       translit_sg: word.translit_sg,
       translit_pl: word.translit_pl,
+      isVerb: word.verb,
+      conjugation: word.conjugation,
     };
 
     let updater = JSON.parse(JSON.stringify(agglutinatedWords));

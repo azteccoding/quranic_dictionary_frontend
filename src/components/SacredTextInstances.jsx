@@ -1,3 +1,5 @@
+import SpecialHadithCollection from "./SpecialHadithCollection";
+
 const SacredTextInstances = ({ r }) => {
   return (
     <>
@@ -33,6 +35,9 @@ const SacredTextInstances = ({ r }) => {
               {r.hadith_appear.collection_name} {r.hadith_appear.number}
             </a>
           </p>
+          {r.hadith_appear?.collection === "ahmad" && (
+            <SpecialHadithCollection props={r.hadith_appear} />
+          )}
         </div>
       )}
 

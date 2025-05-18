@@ -132,6 +132,11 @@ body {
   padding-bottom: 1rem;
 }
 
+.verb-p {
+  display: inline;
+  margin: 0.3rem;
+}
+
 @media (max-width: 768px) {
   .switch-mobile {
     transform: scale(1.6); /* Aumenta visualmente el tamaño del switch */

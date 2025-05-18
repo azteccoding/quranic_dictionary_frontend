@@ -25,7 +25,7 @@ const ColorTags = ({ tags }) => {
   const verb = tags.verb && (
     <span className="badge text-bg-success">Verbo</span>
   );
-  const nounInflection = (
+  const nounInflection = !tags.verb && (
     <span className="badge text-bg-danger">
       {tags.diptote ? "Diptote" : "Triptote"}
     </span>
