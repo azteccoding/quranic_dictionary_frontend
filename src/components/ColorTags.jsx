@@ -37,7 +37,7 @@ const ColorTags = ({ tags }) => {
     <span className="badge text-bg-info">Extranjerismo</span>
   );
   const verbForm = tags.verb && (
-    <span class="badge text-bg-dark">Form {tags.form || "I"}</span>
+    <span class="badge text-bg-dark">Forma {tags.form || "I"}</span>
   );
 
   return (
