@@ -31,7 +31,16 @@ const SearchResult = ({
       )}
       <div
         className="arabic-word-xs"
-        style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}
+        style={{
+          paddingTop: "1rem",
+          paddingBottom: "1.5rem",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "0.3rem",
+          textAlign: "center",
+        }}
       >
         Traducción:{" "}
         {r.spanish.map((i) => (
