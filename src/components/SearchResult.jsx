@@ -70,11 +70,11 @@ const SearchResult = ({
       </p>
       {r.arabic_pl.length > 0 && (
         <div>
-          <span className="arabic-word-s">pl. </span>
+          <span className="arabic-word-xs">pl. </span>
           {r.arabic_pl.map((w, i) => (
             <p
               key={i + "pls"}
-              className="arabic-word-xxs"
+              className="arabic-word-xxs-pl"
               style={{ display: "inline-block", margin: "0.3rem" }}
             >
               {r.arabic_pl[i]} ({r.translit_pl[i]}),{" "}
