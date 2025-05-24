@@ -74,7 +74,7 @@ const SearchResult = ({
           {r.arabic_pl.map((w, i) => (
             <p
               key={i + "pls"}
-              className="arabic-word-s"
+              className="arabic-word-xs"
               style={{ display: "inline-block", margin: "0.3rem" }}
             >
               {r.arabic_pl[i]} ({r.translit_pl[i]}),{" "}
