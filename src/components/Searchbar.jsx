@@ -55,8 +55,6 @@ const Searchbar = () => {
   }
 
   function handleAgglutinate(word) {
-    console.log(word);
-
     const wordContent = {
       id: Math.random().toString(16).slice(2),
       spanish: word.spanish,

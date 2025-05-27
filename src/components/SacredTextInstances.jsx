@@ -4,12 +4,12 @@ import SpecialHadithCollection from "./SpecialHadithCollection";
 const SacredTextInstances = ({ r }) => {
   const hadithCollectionFullName =
     r?.hadith_appear?.collection_name ||
-    hadithCollectionCode[r?.hadith_appear?.collection_code].name ||
+    hadithCollectionCode[r?.hadith_appear?.collection_code]?.name ||
     "";
 
   const hadithCollectionShortName =
     r?.hadith_appear?.collection ||
-    hadithCollectionCode[r?.hadith_appear?.collection_code].shortName ||
+    hadithCollectionCode[r?.hadith_appear?.collection_code]?.shortName ||
     "";
 
   return (
