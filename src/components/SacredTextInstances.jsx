@@ -1,6 +1,17 @@
+import { hadithCollectionCode } from "../constants/constants";
 import SpecialHadithCollection from "./SpecialHadithCollection";
 
 const SacredTextInstances = ({ r }) => {
+  const hadithCollectionFullName =
+    r?.hadith_appear?.collection_name ||
+    hadithCollectionCode[r?.hadith_appear?.collection_code].name ||
+    "";
+
+  const hadithCollectionShortName =
+    r?.hadith_appear?.collection ||
+    hadithCollectionCode[r?.hadith_appear?.collection_code].shortName ||
+    "";
+
   return (
     <>
       {r.quranic_appear?.appearance && (
@@ -20,9 +31,9 @@ const SacredTextInstances = ({ r }) => {
         </div>
       )}
 
-      {r.hadith_appear?.collection_name && (
+      {hadithCollectionShortName && (
         <div>
-          <h4>En la Sunna aparece en {r.hadith_appear?.collection_name}</h4>
+          <h4>En la Sunna aparece en {hadithCollectionFullName}</h4>
 
           <p className="arabic-word-s">{r.hadith_appear.sentence}</p>
           <p>"{r.hadith_appear.translation}"</p>
@@ -30,13 +41,16 @@ const SacredTextInstances = ({ r }) => {
             Fuente:{" "}
             <a
               target="blank"
-              href={`https://sunnah.com/${r.hadith_appear.collection}:${r.hadith_appear.number}`}
+              href={`https://sunnah.com/${hadithCollectionShortName}:${r.hadith_appear.number}`}
             >
-              {r.hadith_appear.collection_name} {r.hadith_appear.number}
+              {hadithCollectionFullName} {r.hadith_appear.number}
             </a>
           </p>
-          {r.hadith_appear?.collection === "ahmad" && (
-            <SpecialHadithCollection props={r.hadith_appear} />
+          {hadithCollectionShortName === "ahmad" && (
+            <SpecialHadithCollection
+              props={r.hadith_appear}
+              hadithCollectionFullName={hadithCollectionFullName}
+            />
           )}
         </div>
       )}
