@@ -10,13 +10,22 @@ You can search a word in classical arabic or spanish just by selecting the right
 
 This dictionary will show you the searched word being used in a verse of the Quran (if it appears), in a hadith (usually the 6 Classical Books but sometimes others) and being used in a real scenario (usually the classical and appraised fiqh book Al-Muhalla by Imam Ibn Hazm)
 
+![alt text](image-1.png)
+
+Tippical search looks like this:
+
+![alt text](image-2.png)
+
 ### Search a word either in arabic or spanish
 
 If a word you are looking for does not appear:
 
 - Check your spelling
 - Before looking it up, this dictionary app removes harakats, tanween and most of the quranic tajweed signs. Keep that in mind
+- Shadda on semi-vowels like ي and و is usually not written on.
 - Usually hamzas ء at the begining of a word and alif al wasl ٱ are written down as a simple alif ا
+
+![alt text](image-3.png)
 
 ### You can save words for latter
 
@@ -25,6 +34,8 @@ One cool feature is that you can "agglutinate" words, that is, saving it at the 
 Click on the AGLUTINAR button in order to save a word (this created a card with the word in arabic and its meaning). Then Tap or click on the header of the card in order to toggle the scrolling and collapsing of the card.
 
 When you are done with a word just tap or click the X button on the card to delete it.
+
+![alt text](image-4.png)
 
 ## Available Scripts
 
