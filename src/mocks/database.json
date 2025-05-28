@@ -1,43 +1,50 @@
 {
   "_id": {
-    "$oid": "6807f8f31ab206c8f041ae53"
+    "$oid": "682bfa65a55c0e6863878058"
   },
-  "spanish": ["casa"],
-  "english": "house",
-  "arabic_sg": "بيت",
-  "arabic_pl": ["بيوت"],
-  "translit_sg": "bayt",
-  "translit_pl": ["buyūt"],
+  "spanish": ["mal", "maldad", "enfermedad", "calamidad"],
+  "english": "evil",
+  "arabic_sg": "سوء",
+  "arabic_pl": ["اسواء"],
+  "translit_sg": "sū'",
+  "translit_pl": ["aswā'"],
   "quranic_appear": {
-    "appearance": "16:80",
-    "sentence": "وَٱللَّهُ جَعَلَ لَكُم مِّنۢ بُيُوتِكُمْ سَكَنًۭا",
-    "translation": "Y Allah ha hecho de vuestras casas descanso para vosotros"
+    "appearance": "12:53",
+    "sentence": "إِنَّ ٱلنَّفْسَ لَأَمَّارَةٌۢ بِٱلسُّوٓءِ",
+    "translation": "el alma de uno siempre incita al mal"
   },
-  "root": ["ب", "ي", "ت"],
+  "root": ["س", "و", "ء"],
   "hadith_appear": {
-    "collection": "ibnmajah",
-    "collection_name": "Sunan Ibn Majah",
-    "number": "3328",
-    "sentence": "بَيْتٌ لاَ تَمْرَ فِيهِ كَالْبَيْتِ لاَ طَعَامَ فِيهِ",
-    "translation": "Una casa en la que no hay dátiles, es una casa en la que no hay comida"
+    "collection": "bukhari",
+    "collection_name": "Sahih al-Bukhari",
+    "number": "7090",
+    "links": [],
+    "sentence": " كُلُّ رَجُلٍ لاَفًّا رَأْسَهُ فِي ثَوْبِهِ يَبْكِي. وَقَالَ عَائِذًا بِاللَّهِ مِنْ سُوءِ الْفِتَنِ. أَوْ قَالَ أَعُوذُ بِاللَّهِ مِنْ سُوءِ الْفِتَنِ",
+    "translation": "Todo hombre se cubre la cabeza con su manto, llorando. Y dice: 'Me estoy refugiando en Allah del mal de las pruebas'. O dice: 'Me refugio en Allah del mal de las pruebas'"
   },
   "phrase": {
-    "arabic": "الصلاة جائزة في البيع والكنائس والبيت من بيوت النيران والبيوت البدّ",
-    "meaning": "El salat está permitido en las sinagogas, iglesias y casas de fuego y casas de ídolos",
-    "reference": "Ibn Hazm. Muhalla, vol. 2 pág.136-7",
-    "translit": "aṣ-ṣalātu jā'izatun fi l-biyaʿi wa l-kanā'isi wa l-bayti min buyūti an-nīrān wa buyūti l-buddi",
-    "link": ""
+    "arabic": "مِنْ سُوءِ الْكِبْرِ .وَلَمْ يَذْكُرْ سُوءَ الْكُفْرِ",
+    "meaning": "Del mal de la vejez. Y no menciionó al mal de la incredulidad",
+    "translit": "min sū'i l-kibri wa lam yaḏkur sū'a l-kufri",
+    "link": "https://sunnah.com/abudawud:5071",
+    "reference": "Sunan Abi Dawud 5071"
   },
+  "additionals": [
+    {
+      "arabic": "سوء الفهم",
+      "meaning": "malentendido",
+      "translit": "sū'u l-fahm"
+    }
+  ],
   "dipote": false,
   "foreign": false,
   "pl_diptote": false,
-  "synonim": "",
+  "synonim": ["سوءة"],
   "antonym": "",
   "noun": true,
   "adjetive": false,
   "adverb": false,
   "preposition": false,
   "verb": false,
-  "masculine": true,
-  "form": ""
+  "masculine": true
 }

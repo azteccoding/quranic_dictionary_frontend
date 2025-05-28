@@ -1,6 +1,30 @@
-# Getting Started with Create React App
+# Diccionario de Jorge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a dictionary intented to help people learn the classical and quranic arabic language for spanish speakers.
+
+The current repo consists of the front end section of the project. Other sections are backend (run by netlify lambdas) and database (hosted in an Atlas MongoDB cluster)
+
+## How does it work
+
+You can search a word in classical arabic or spanish just by selecting the right checkbox of the radiobutton.
+
+This dictionary will show you the searched word being used in a verse of the Quran (if it appears), in a hadith (usually the 6 Classical Books but sometimes others) and being used in a real scenario (usually the classical and appraised fiqh book Al-Muhalla by Imam Ibn Hazm)
+
+### Search a word either in arabic or spanish
+
+If a word you are looking for does not appear:
+
+- Check your spelling
+- Before looking it up, this dictionary app removes harakats, tanween and most of the quranic tajweed signs. Keep that in mind
+- Usually hamzas ء at the begining of a word and alif al wasl ٱ are written down as a simple alif ا
+
+### You can save words for latter
+
+One cool feature is that you can "agglutinate" words, that is, saving it at the bottom of the page so you can look the up multiples times even without internet conection.
+
+Click on the AGLUTINAR button in order to save a word (this created a card with the word in arabic and its meaning). Then Tap or click on the header of the card in order to toggle the scrolling and collapsing of the card.
+
+When you are done with a word just tap or click the X button on the card to delete it.
 
 ## Available Scripts
 
@@ -28,43 +52,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
