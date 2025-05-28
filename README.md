@@ -8,7 +8,11 @@ The current repo consists of the front end section of the project. Other section
 
 You can search a word in classical arabic or spanish just by selecting the right checkbox of the radiobutton.
 
-This dictionary will show you the searched word being used in a verse of the Quran (if it appears), in a hadith (usually the 6 Classical Books but sometimes others) and being used in a real scenario (usually the classical and appraised fiqh book Al-Muhalla by Imam Ibn Hazm)
+This dictionary will show you the searched word being used in a verse of the Quran (if it appears), in a hadith (usually the 6 Classical Books but sometimes others) and being used in a real scenario (usually the classical and appraised fiqh book Al-Muhalla by Imam Ibn Hazm).
+
+It also adds a link after the quranic verse, hadith or quotation from the fiqh book so that you can go to the original source and look up the phrase in context or confirm its authenticity.
+
+For the quotations of the book Al-Muhalla by Imam Ibn Hazm, the arabic phrases are always acompanied by transliteration using the system by [Casa de Velázquez](https://www.casadevelazquez.org/fileadmin/fichiers/publicaciones/Normes_annexes/EdCVZ_ES_TablTransArabe.pdf) as well as a link to Google Translator for prounciation. A link to the place where the phrase is found on the actual book is provided as well. The actual Al-Muhalla link is 100% harakat but for this dictionary the phrase is intentionally left without tashkeel or harakats in order to help the student develop the confidence to read without harakats and to provide a helpful excercise for practicing.
 
 ![alt text](image-1.png)
 
@@ -21,7 +25,7 @@ Tippical search looks like this:
 If a word you are looking for does not appear:
 
 - Check your spelling
-- Before looking it up, this dictionary app removes harakats, tanween and most of the quranic tajweed signs. Keep that in mind
+- Before looking it up, this dictionary app removes harakats, tanween and most of the quranic tajweed signs but not all of them. Keep that in mind
 - Shadda on semi-vowels like ي and و is usually not written on.
 - Usually hamzas ء at the begining of a word and alif al wasl ٱ are written down as a simple alif ا
 
