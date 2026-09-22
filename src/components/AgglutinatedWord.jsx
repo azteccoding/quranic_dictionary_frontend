@@ -50,38 +50,28 @@ const AgglutinatedWord = ({
             <h2 className="arabic-word-s">{word.arabic_sg} </h2>
             <p className="arabic-word-3xs">{word.translit_sg}</p>
             {word.arabic_pl.length > 0 && (
-              <div>
+              <div className="result-plural-row">
                 pl.
                 {word.arabic_pl.map((item, index) => (
                   <p
                     key={item + "p"}
-                    className="arabic-word-3xs"
-                    style={{ display: "inline", margin: "0.3rem" }}
+                    className="arabic-word-3xs result-plural-item"
                   >
                     {item} ({word.translit_pl[index]}),
                   </p>
                 ))}
               </div>
             )}
-            <div
-              className="arabic-word-xxs"
-              style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}
-            >
+            <div className="arabic-word-xxs result-translation-row">
               Traducción:{" "}
               {word.spanish.map((i) => (
-                <p
-                  key={i + "p"}
-                  style={{ display: "inline", margin: "0.3rem" }}
-                >
+                <p key={i + "p"} className="result-spanish-item">
                   {i},
                 </p>
               ))}
             </div>
             {word.isVerb && (
-              <div
-                className="arabic-word-xxs"
-                style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}
-              >
+              <div className="conjugation-block">
                 <p className="arabic-word-xxs verb-p">
                   Raíz: {word.conjugation.root}
                 </p>

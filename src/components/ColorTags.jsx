@@ -37,11 +37,11 @@ const ColorTags = ({ tags }) => {
     <span className="badge text-bg-info">Extranjerismo</span>
   );
   const verbForm = tags.verb && (
-    <span class="badge text-bg-dark">Forma {tags.form || "I"}</span>
+    <span className="badge text-bg-dark">Forma {tags.form || "I"}</span>
   );
 
   return (
-    <div style={{ margin: "1rem" }}>
+    <div className="tag-row">
       {noun}
       {adjetive}
       {preposition}

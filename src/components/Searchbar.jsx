@@ -162,12 +162,11 @@ const Searchbar = () => {
 
   return (
     <>
-      <div>
-        <h1 style={{ paddingTop: "3rem" }}>Diccionario {searchTitle}</h1>
+      <div className="dictionary-header">
+        <h1 className="search-title">Diccionario {searchTitle}</h1>
 
         <div
-          style={{ paddingTop: "1.8rem", paddingBottom: "1.3rem" }}
-          className="btn-group btn-group-toggle"
+          className="btn-group btn-group-toggle language-toggle"
           data-toggle="buttons"
         >
           <label className="btn">Buscar palabra en</label>
@@ -200,8 +199,7 @@ const Searchbar = () => {
         </div>
 
         <form
-          className="row g-2 align-items-center form-field"
-          style={{ padding: "1rem 9rem" }}
+          className="row g-2 align-items-center form-field search-form"
           onSubmit={handleSubmit}
         >
           <label htmlFor="gsearch" className="form-label">
@@ -228,7 +226,7 @@ const Searchbar = () => {
         </div>
       )}
       {queryResult?.length > 0 && !isLoading && (
-        <p>
+        <p className="result-count">
           {queryResult.length} coincidencia{queryResult.length > 1 ? "s" : ""}
         </p>
       )}
@@ -243,9 +241,13 @@ const Searchbar = () => {
             />
           ))
         : null}
-      {wordNotFoundInDictionary && !isLoading
-        ? "Esa palabra aun no se encuentra en el diccionario"
-        : ""}
+      {wordNotFoundInDictionary && !isLoading ? (
+        <p className="not-found-message">
+          Esa palabra aun no se encuentra en el diccionario
+        </p>
+      ) : (
+        ""
+      )}
       <div className="signature">
         {"Investigación y programación por Khalid Jorge"}
       </div>

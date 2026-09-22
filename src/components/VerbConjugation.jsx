@@ -1,6 +1,6 @@
 const VerbConjugation = ({ props }) => {
   return (
-    <div>
+    <div className="conjugation-block">
       <h5>Conjugación</h5>
 
       <p className="arabic-word-xxs verb-p">Raíz: {props.root}</p>
