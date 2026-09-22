@@ -15,8 +15,12 @@ export const hadithCollectionCode = {
   t: { name: "Jami` at-Tirmidhi", shortName: "tirmidhi" },
   m: { name: "Sahih Muslim", shortName: "muslim" },
   d: { name: "Sunan Abi Dawud", shortName: "abudawud" },
-  n: { name: "nasai", shortName: "Sunan an-Nasa'i" },
+  n: { name: "Sunan an-Nasa'i", shortName: "nasai" },
   k: { name: "Mishkat al-Masabih", shortName: "mishkat" },
   g: { name: "Bulugh al-Maram", shortName: "bulugh" },
   j: { name: "Sunan Ibn Majah", shortName: "ibnmajah" },
 };
+
+// Page titles
+export const ARAB_2_SPANISH_TITLE = "Árabe coránico - Español";
+export const SPANISH_2_ARAB_TITLE = "Español - Árabe coránico";

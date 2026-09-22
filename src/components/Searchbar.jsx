@@ -3,11 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import SearchResult from "./SearchResult";
 import { findInDictionary } from "../services/requests";
 import AgglutinatedWord from "./AgglutinatedWord";
+import {
+  ARAB_2_SPANISH_TITLE,
+  SPANISH_2_ARAB_TITLE,
+} from "../constants/constants";
 
 const Searchbar = () => {
   const [agglutinatedWords, setAgglutinatedWords] = useState([]);
-  const arab2EspTitle = "Árabe coránico - Español";
-  const esp2ArabTitle = "Español - Árabe coránico";
   const [wordNotFoundInDictionary, setWordNotFoundInDictionary] =
     useState(false);
   const [arab2EspSelected, setArab2EspSelected] = useState(true);
@@ -38,7 +40,9 @@ const Searchbar = () => {
   useEffect(() => {
     setIsLoading(false);
     setSynonymSearched(false);
-    setSearchTitle(() => (arab2EspSelected ? arab2EspTitle : esp2ArabTitle));
+    setSearchTitle(() =>
+      arab2EspSelected ? ARAB_2_SPANISH_TITLE : SPANISH_2_ARAB_TITLE,
+    );
 
     if (toggleRef.current && !isFirstRender.current) {
       inputReference.current.focus();
@@ -129,7 +133,7 @@ const Searchbar = () => {
 
   const searchWordManually = async (p) => {
     setArab2EspSelected(true);
-    setSearchTitle(arab2EspTitle);
+    setSearchTitle(ARAB_2_SPANISH_TITLE);
     setWordNotFoundInDictionary(false);
     setIsLoading(true);
 
