@@ -22,17 +22,16 @@ body {
   padding: 0;
   color: var(--ink);
   background-color: var(--paper-bg);
-  background-image:
-    radial-gradient(
+  background-image: radial-gradient(
       ellipse at center,
       rgba(0, 0, 0, 0) 55%,
       rgba(70, 52, 25, 0.16) 100%
     ),
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.42  0 0 0 0 0.32  0 0 0 0 0.16  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   background-attachment: fixed;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -271,9 +270,7 @@ a:hover {
   background: linear-gradient(180deg, var(--accent-light), var(--accent));
   border: 1px solid var(--accent-dark);
   color: #fbf3df;
-  box-shadow:
-    0 2px 0 rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .btn-primary:hover,
@@ -459,9 +456,7 @@ a:hover {
   background-color: var(--paper-card);
   border: 1px solid var(--border-soft);
   border-radius: 3px;
-  box-shadow:
-    0 1px 2px rgba(76, 58, 27, 0.15),
-    0 6px 16px rgba(76, 58, 27, 0.18);
+  box-shadow: 0 1px 2px rgba(76, 58, 27, 0.15), 0 6px 16px rgba(76, 58, 27, 0.18);
   position: relative;
   text-align: center;
 }
@@ -533,6 +528,42 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
+/* ---------- Participles (clickable, like a synonym/agglutinated word) ---------- */
+
+.participle-block {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.participle-block h6 {
+  color: var(--rubric);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  margin-bottom: 0.4rem;
+}
+
+.word-link {
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0.15rem;
+  margin: 0 0.15rem;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.word-link:hover,
+.word-link:focus,
+.word-link:active {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-dark);
+}
+
 /* ---------- Sacred text / manuscript citation blocks ---------- */
 
 .sacred-text-block {
@@ -586,19 +617,23 @@ a:hover {
 }
 
 .accordion .btn-link {
-  color: #0d6efd;
+  color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: #0d6efd;
+  text-decoration-color: var(--gold);
   text-underline-offset: 3px;
-  -webkit-tap-highlight-color: transparent; /* evita el flash azul al tocar en móvil */
-  padding: 0.4rem 0.2rem; /* área de toque más cómoda */
+  font-weight: 600;
+  padding: 0.4rem 0.2rem;
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .accordion .btn-link:hover,
 .accordion .btn-link:focus,
 .accordion .btn-link:active {
-  color: #0a58ca; /* azul más oscuro al tocar/hacer hover */
+  color: var(--accent-dark);
   text-decoration: underline;
+  text-decoration-color: var(--accent-dark);
 }
 
 .accordion .card-body {
@@ -618,6 +653,186 @@ a:hover {
   color: var(--rubric);
   font-family: "Cormorant Garamond", Georgia, serif;
   margin-bottom: 0.75rem;
+}
+
+/* ---------- Admin gate (add-word screen) ---------- */
+
+.admin-gate {
+  max-width: 24rem;
+  margin: 6rem auto;
+  padding: 2.5rem 2rem;
+  background-color: var(--paper-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(76, 58, 27, 0.15), 0 6px 16px rgba(76, 58, 27, 0.18);
+  text-align: center;
+}
+
+.admin-gate h2 {
+  margin-bottom: 1.5rem;
+}
+
+.admin-gate .form-control {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Add-word form ---------- */
+
+.add-word-page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  text-align: left;
+}
+
+.add-word-page h1 {
+  display: block;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+}
+
+.form-section-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--rubric);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.form-row {
+  margin-bottom: 1.1rem;
+}
+
+.form-row label {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.form-row .form-text-hint {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.dynamic-list-item {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.dynamic-list-item .form-control {
+  flex: 1;
+}
+
+.btn-remove {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--rubric);
+  color: var(--rubric);
+  border-radius: 4px;
+  width: 2.1rem;
+  height: 2.1rem;
+  line-height: 1;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.btn-remove:hover {
+  background-color: var(--rubric);
+  color: #fbf3df;
+}
+
+.btn-remove-text {
+  width: auto;
+  height: auto;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+.btn-add-item {
+  background: transparent;
+  border: 1px dashed var(--accent);
+  color: var(--accent);
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-add-item:hover {
+  background-color: rgba(107, 79, 39, 0.08);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.checkbox-row input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.additional-entry {
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--paper-card-alt);
+}
+
+.additional-entry .form-control {
+  margin-bottom: 0.5rem;
+}
+
+.grammar-mode-toggle {
+  margin-bottom: 1.5rem;
+}
+
+.submit-feedback {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 4px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.submit-feedback.success {
+  background-color: rgba(95, 122, 79, 0.12);
+  border: 1px solid #5f7a4f;
+  color: #3d5233;
+}
+
+.submit-feedback.error {
+  background-color: rgba(122, 50, 38, 0.1);
+  border: 1px solid var(--rubric);
+  color: var(--rubric);
 }
 
 @media (max-width: 768px) {

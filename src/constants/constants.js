@@ -4,9 +4,15 @@ export const AR2ES_API_URI =
   "https://quranicarabicspanishdictionary.netlify.app/.netlify/functions/arabic?word=";
 
 export const ES2AR_API_URI_LOCAL =
-  "http://localhost:8888/.netlify/functions/spanish?word=";
+  "http://localhost:9999/.netlify/functions/spanish?word=";
 export const AR2ES_API_URI_LOCAL =
-  "http://localhost:8888/.netlify/functions/arabic?word=";
+  "http://localhost:9999/.netlify/functions/arabic?word=";
+
+// Alta de palabras (lambda aún por crear — ver create-word.js pendiente)
+export const CREATE_WORD_API_URI =
+  "https://quranicarabicspanishdictionary.netlify.app/.netlify/functions/create_word";
+export const CREATE_WORD_API_URI_LOCAL =
+  "http://localhost:9999/.netlify/functions/create_word";
 
 // Hadith collections
 

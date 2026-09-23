@@ -102,7 +102,13 @@ const SearchResult = ({
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}
-      {r.verb && <VerbConjugation props={r.conjugation} />}
+      {r.verb && (
+        <VerbConjugation
+          props={r.conjugation}
+          participle={r.participle}
+          searchWordManually={searchWordManually}
+        />
+      )}
       {r.additionals && <ExtraMeaning additionals={r.additionals} />}
       <SacredTextInstances r={r} />
       {r.synonim?.length > 0 && (
