@@ -22,5 +22,5 @@ export const hadithCollectionCode = {
 };
 
 // Page titles
-export const ARAB_2_SPANISH_TITLE = "Árabe coránico - Español";
-export const SPANISH_2_ARAB_TITLE = "Español - Árabe coránico";
+export const ARAB_2_SPANISH_TITLE = "Árabe coránico-Español";
+export const SPANISH_2_ARAB_TITLE = "Español-Árabe coránico";

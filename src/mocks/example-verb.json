@@ -1,0 +1,76 @@
+{
+  "_id": {
+    "$oid": "682a2b5a5f539f26e76f2f71"
+  },
+  "spanish": ["montar", "subirse", "abordar"],
+  "english": "mount",
+  "arabic_sg": "ركب",
+  "arabic_pl": [],
+  "translit_sg": "rakiba",
+  "translit_pl": [],
+  "quranic_appear": {
+    "appearance": "16:8",
+    "sentence": "وَٱلْخَيْلَ وَٱلْبِغَالَ وَٱلْحَمِيرَ لِتَرْكَبُوهَا وَزِينَةًۭ ۚ وَيَخْلُقُ مَا لَا تَعْلَمُونَ",
+    "translation": "Y (también ha creado) los caballos, las mulas y los burros para que los monten y se deleiten con su belleza. Y crea otras cosas que ignoran"
+  },
+  "root": ["ر", "ك", "ب"],
+  "hadith_appear": {
+    "collection": "ahmad",
+    "collection_name": "Musnad Ahmad",
+    "number": "3788",
+    "links": [
+      "https://www.kalamullah.com/Books/musnad_ahmad_bin_hanbal_arabic_-english_translation-volume_3.pdf",
+      "https://sunnah2.com/262"
+    ],
+    "sentence": "لَيْسَ عَلَيْهِمْ ثِيَابٌ وَلَا أَرَى سَوْءَاتِهِمْ طِوَالًا قَلِيلَ لَحْمُهُمْ قَالَ فَأَتَوْا فَجَعَلُوا يَرْكَبُونَ رَسُولَ اللَّهِ ﷺ قَالَ وَجَعَلَ نَبِيُّ اللَّهِ ﷺ يَقْرَأُ عَلَيْهِمْ",
+    "translation": "No llevaban ropa, no les vi los genitales y eran altos y flacuchos. Él [Abdullah] dijo: 'Llegaron y empezaron a montar al Mensajero de Allah SAW, y el Profeta de Allah SAW empezó a recitarles'"
+  },
+  "phrase": {
+    "arabic": "فإن خفتم فرجالا أو ركبانا",
+    "meaning": "Y si tenéis miedo [de un ataque enemigo] hacedla [la oración] de pie o montados",
+    "translit": "fa 'in jiftum farŷālan 'aw rukbānan",
+    "link": "https://quran.com/2?startingVerse=239",
+    "reference": "Corán 2:239"
+  },
+  "additionals": [
+    {
+      "arabic": "ركب ه",
+      "meaning": "montarlo [un animal]",
+      "translit": "rakiba hu"
+    },
+    {
+      "arabic": "ركب السيارة",
+      "meaning": "viajar en carro",
+      "translit": "rakiba s-sayyārat"
+    },
+    {
+      "arabic": "ركب خيوله الحربية",
+      "meaning": "ponerse en un pedestal / sentirse la última Coca del desierto",
+      "translit": "rakiba juyūlahu l-ḥarbiyyat"
+    }
+  ],
+  "dipote": false,
+  "foreign": false,
+  "pl_diptote": false,
+  "synonim": [],
+  "antonym": "",
+  "noun": false,
+  "adjetive": false,
+  "adverb": false,
+  "preposition": false,
+  "verb": true,
+  "masculine": true,
+  "conjugation": {
+    "root": "ركب",
+    "perfect3": "ركب",
+    "perfect3_translit": "rakiba",
+    "perfect1": "ركبت",
+    "perfect1_translit": "rakibtu",
+    "imperfect_vowel": "a",
+    "masdar": "ركوب",
+    "masdar_meaning": "cabalgata / abordaje",
+    "masdar_translit": "rukūb",
+    "form": "I",
+    "irregular": false
+  }
+}
