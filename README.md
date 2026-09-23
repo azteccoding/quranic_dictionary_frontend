@@ -41,6 +41,15 @@ When you are done with a word just tap or click the X button on the card to dele
 
 ![alt text](image-4.png)
 
+### App is full responsive
+
+![alt text](image.png)
+
+Search on your iPhone or iPad or any mobile device with smaller screens than a PC.
+The app is responsive to all screen sizes
+
+![alt text](image-5.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
