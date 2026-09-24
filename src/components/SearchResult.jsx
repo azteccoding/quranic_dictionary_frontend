@@ -94,9 +94,9 @@ const SearchResult = ({
           preposition: r.preposition,
           adverb: r.adverb,
           noun: r.noun,
-          form: r.conjugation.form,
+          form: r.conjugation?.form ? r.conjugation?.form : "",
           synonim: r.synonim,
-          pasive: r.pasive,
+          pasive: r.pasive ? r.pasive : false,
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}

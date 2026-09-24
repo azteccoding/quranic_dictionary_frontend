@@ -1,6 +1,8 @@
 const ColorTags = ({ tags }) => {
   const wordGender = () => {
-    const backgroundStyle = tags.masculine ? "text-bg-secondary" : "bg-pink";
+    const backgroundStyle = tags.masculine
+      ? "text-bg-secondary"
+      : "text-bg-pink";
 
     return tags.noun ? (
       <span className={`badge ${backgroundStyle}`}>
