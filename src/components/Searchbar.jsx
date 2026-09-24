@@ -5,6 +5,7 @@ import { findInDictionary } from "../services/requests";
 import AgglutinatedWord from "./AgglutinatedWord";
 import {
   ARAB_2_SPANISH_TITLE,
+  SIGNATURE,
   SPANISH_2_ARAB_TITLE,
 } from "../constants/constants";
 
@@ -248,9 +249,8 @@ const Searchbar = () => {
       ) : (
         ""
       )}
-      <div className="signature">
-        {"Investigación y programación por Khalid Jorge"}
-      </div>
+      <div className="signature">{SIGNATURE}</div>
+
       {queryResult?.length === 0 && <div className="bottom-filler"></div>}
       <div ref={agglutinatedRef}>
         {agglutinatedWords.map((word, i) => (

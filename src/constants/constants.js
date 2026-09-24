@@ -30,3 +30,6 @@ export const hadithCollectionCode = {
 // Page titles
 export const ARAB_2_SPANISH_TITLE = "Árabe coránico-Español";
 export const SPANISH_2_ARAB_TITLE = "Español-Árabe coránico";
+
+// Notes
+export const SIGNATURE = "Investigación y programación por Khalid Jorge Montes";
