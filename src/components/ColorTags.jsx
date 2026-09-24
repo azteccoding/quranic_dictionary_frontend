@@ -16,13 +16,13 @@ const ColorTags = ({ tags }) => {
     <span className="badge text-bg-primary">Sustantivo</span>
   );
   const adjetive = tags.adjetive && (
-    <span className="badge bg-brown">Adjetivo</span>
+    <span className="badge text-bg-brown">Adjetivo</span>
   );
   const adverb = tags.adverb && (
-    <span className="badge bg-purple">Adverbio</span>
+    <span className="badge text-bg-purple">Adverbio</span>
   );
   const preposition = tags.preposition && (
-    <span className="badge bg-purple">Preposición</span>
+    <span className="badge text-bg-purple">Preposición</span>
   );
   const verb = tags.verb && (
     <span className="badge text-bg-success">Verbo</span>

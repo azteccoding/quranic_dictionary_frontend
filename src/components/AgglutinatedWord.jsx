@@ -81,6 +81,9 @@ const AgglutinatedWord = ({
                     {word.conjugation.imperfect_vowel}
                   </span>
                 </p>
+                <p className="arabic-word-xxs verb-p">
+                  Forma {word.conjugation.form}
+                </p>
                 <br />
                 <p className="arabic-word-xxs verb-p">
                   Sustantivo verbal: {word.conjugation.masdar}{" "}
