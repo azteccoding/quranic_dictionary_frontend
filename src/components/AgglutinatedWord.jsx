@@ -1,4 +1,5 @@
 import { useState } from "react";
+import IslamicTechnicalTerm from "./IslamicTechnicalTerm";
 
 const AgglutinatedWord = ({
   word,
@@ -36,6 +37,15 @@ const AgglutinatedWord = ({
               onClick={() => searchWordManually(word.arabic_sg)}
             >
               <span className="arabic-word-s">{word.arabic_sg}</span>
+              {word.isTechnicalTerm && (
+                <span
+                  className="islamic-term__marca"
+                  title="Término técnico islámico"
+                  aria-label="Término técnico islámico"
+                >
+                  ۞
+                </span>
+              )}
             </button>
           </h2>
         </div>
@@ -63,13 +73,18 @@ const AgglutinatedWord = ({
               </div>
             )}
             <div className="arabic-word-xxs result-translation-row">
-              Traducción:{" "}
               {word.spanish.map((i) => (
                 <p key={i + "p"} className="result-spanish-item">
                   {i},
                 </p>
               ))}
             </div>
+
+            <IslamicTechnicalTerm
+              isTechnicalTerm={word.isTechnicalTerm}
+              term={word.term}
+            />
+
             {word.isVerb && (
               <div className="conjugation-block">
                 <p className="arabic-word-xxs verb-p">

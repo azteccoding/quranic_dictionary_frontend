@@ -27,7 +27,6 @@ const SearchResult = ({
         </div>
       )}
       <div className="arabic-word-xs result-translation-row">
-        Traducción:{" "}
         {r.spanish.map((i) => (
           <p key={i + "p"} className="result-spanish-item">
             {i},
@@ -48,7 +47,7 @@ const SearchResult = ({
         ))}
       </h2>
       <p className="arabic-word-xs">
-        Traducción: {r.arabic_sg} {r.translit_sg}
+        {r.arabic_sg} {r.translit_sg}
       </p>
       {r.arabic_pl.length > 0 && (
         <div>

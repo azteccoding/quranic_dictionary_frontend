@@ -44,7 +44,7 @@ export default function DaylyWord() {
 
   return (
     <aside className="palabra-dia mb-3" aria-label="Palabra del día">
-      <span className="palabra-dia__etiqueta">Palabra del día</span>
+      <span className="palabra-dia__etiqueta">Palabra destacada</span>
 
       <span className="palabra-dia__arabe" lang="ar" dir="rtl">
         {palabra.arabic_sg}
