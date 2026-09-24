@@ -19,10 +19,7 @@ const SearchResult = ({
         <div className="result-plural-row">
           pl.
           {r.arabic_pl.map((item, index) => (
-            <p
-              key={item + "p"}
-              className="arabic-word-xs result-plural-item"
-            >
+            <p key={item + "p"} className="arabic-word-xs result-plural-item">
               {item} ({r.translit_pl[index]}),
             </p>
           ))}
@@ -97,8 +94,9 @@ const SearchResult = ({
           preposition: r.preposition,
           adverb: r.adverb,
           noun: r.noun,
-          form: r.form,
+          form: r.conjugation.form,
           synonim: r.synonim,
+          pasive: r.pasive,
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}

@@ -33,7 +33,7 @@ const initialFormState = {
   wordClass: "noun", // "noun" | "adjetive" | "adverb" | "preposition" — mutuamente excluyentes
   quranic_appear: { appearance: "", sentence: "", translation: "" },
   hadith_appear: {
-    collection: "",
+    collection_code: "",
     collection_name: "",
     number: "",
     links: [""],
@@ -194,7 +194,8 @@ const AddWord = () => {
       noun: form.mode === "sustantivo" && form.wordClass === "noun",
       adjetive: form.mode === "sustantivo" && form.wordClass === "adjetive",
       adverb: form.mode === "sustantivo" && form.wordClass === "adverb",
-      preposition: form.mode === "sustantivo" && form.wordClass === "preposition",
+      preposition:
+        form.mode === "sustantivo" && form.wordClass === "preposition",
       verb: form.mode === "verbo",
       masculine: !!form.masculine,
       quranic_appear: {
@@ -203,7 +204,7 @@ const AddWord = () => {
         translation: str(form.quranic_appear.translation),
       },
       hadith_appear: {
-        collection: str(form.hadith_appear.collection),
+        collection_code: str(form.hadith_appear.collection_code),
         collection_name: str(form.hadith_appear.collection_name),
         number: str(form.hadith_appear.number),
         links: clean(form.hadith_appear.links),
@@ -300,7 +301,9 @@ const AddWord = () => {
             className="btn-group btn-group-toggle language-toggle grammar-mode-toggle"
             data-toggle="buttons"
           >
-            <label className={`btn btn-secondary ${form.mode === "sustantivo" && "active"}`}>
+            <label
+              className={`btn btn-secondary ${form.mode === "sustantivo" && "active"}`}
+            >
               <input
                 type="radio"
                 name="grammar-mode"
@@ -309,7 +312,9 @@ const AddWord = () => {
               />{" "}
               Sustantivo / Adjetivo
             </label>
-            <label className={`btn btn-secondary ${form.mode === "verbo" && "active"}`}>
+            <label
+              className={`btn btn-secondary ${form.mode === "verbo" && "active"}`}
+            >
               <input
                 type="radio"
                 name="grammar-mode"
@@ -364,7 +369,9 @@ const AddWord = () => {
                 data-toggle="buttons"
                 style={{ marginTop: "1rem" }}
               >
-                <label className={`btn btn-secondary ${form.masculine && "active"}`}>
+                <label
+                  className={`btn btn-secondary ${form.masculine && "active"}`}
+                >
                   <input
                     type="radio"
                     name="gender"
@@ -373,7 +380,9 @@ const AddWord = () => {
                   />{" "}
                   Masculino
                 </label>
-                <label className={`btn btn-secondary ${!form.masculine && "active"}`}>
+                <label
+                  className={`btn btn-secondary ${!form.masculine && "active"}`}
+                >
                   <input
                     type="radio"
                     name="gender"
@@ -521,7 +530,9 @@ const AddWord = () => {
                 dir="rtl"
                 className="form-control"
                 value={form.conjugation.root}
-                onChange={(e) => setNestedField("conjugation", "root", e.target.value)}
+                onChange={(e) =>
+                  setNestedField("conjugation", "root", e.target.value)
+                }
               />
             </div>
 
@@ -533,44 +544,62 @@ const AddWord = () => {
                 dir="rtl"
                 className="form-control"
                 value={form.conjugation.perfect3}
-                onChange={(e) => setNestedField("conjugation", "perfect3", e.target.value)}
+                onChange={(e) =>
+                  setNestedField("conjugation", "perfect3", e.target.value)
+                }
               />
             </div>
 
             <div className="form-row">
-              <label htmlFor="perfect3_translit">Transliteración perfectivo</label>
+              <label htmlFor="perfect3_translit">
+                Transliteración perfectivo
+              </label>
               <input
                 id="perfect3_translit"
                 type="text"
                 className="form-control"
                 value={form.conjugation.perfect3_translit}
                 onChange={(e) =>
-                  setNestedField("conjugation", "perfect3_translit", e.target.value)
+                  setNestedField(
+                    "conjugation",
+                    "perfect3_translit",
+                    e.target.value,
+                  )
                 }
               />
             </div>
 
             <div className="form-row">
-              <label htmlFor="perfect1">Perfectivo (1ra sing., si es irregular)</label>
+              <label htmlFor="perfect1">
+                Perfectivo (1ra sing., si es irregular)
+              </label>
               <input
                 id="perfect1"
                 type="text"
                 dir="rtl"
                 className="form-control"
                 value={form.conjugation.perfect1}
-                onChange={(e) => setNestedField("conjugation", "perfect1", e.target.value)}
+                onChange={(e) =>
+                  setNestedField("conjugation", "perfect1", e.target.value)
+                }
               />
             </div>
 
             <div className="form-row">
-              <label htmlFor="perfect1_translit">Transliteración perfectivo 1ra sing.</label>
+              <label htmlFor="perfect1_translit">
+                Transliteración perfectivo 1ra sing.
+              </label>
               <input
                 id="perfect1_translit"
                 type="text"
                 className="form-control"
                 value={form.conjugation.perfect1_translit}
                 onChange={(e) =>
-                  setNestedField("conjugation", "perfect1_translit", e.target.value)
+                  setNestedField(
+                    "conjugation",
+                    "perfect1_translit",
+                    e.target.value,
+                  )
                 }
               />
             </div>
@@ -583,7 +612,11 @@ const AddWord = () => {
                 className="form-control"
                 value={form.conjugation.imperfect_vowel}
                 onChange={(e) =>
-                  setNestedField("conjugation", "imperfect_vowel", e.target.value)
+                  setNestedField(
+                    "conjugation",
+                    "imperfect_vowel",
+                    e.target.value,
+                  )
                 }
               />
             </div>
@@ -596,19 +629,27 @@ const AddWord = () => {
                 dir="rtl"
                 className="form-control"
                 value={form.conjugation.masdar}
-                onChange={(e) => setNestedField("conjugation", "masdar", e.target.value)}
+                onChange={(e) =>
+                  setNestedField("conjugation", "masdar", e.target.value)
+                }
               />
             </div>
 
             <div className="form-row">
-              <label htmlFor="masdar_translit">Transliteración del masdar</label>
+              <label htmlFor="masdar_translit">
+                Transliteración del masdar
+              </label>
               <input
                 id="masdar_translit"
                 type="text"
                 className="form-control"
                 value={form.conjugation.masdar_translit}
                 onChange={(e) =>
-                  setNestedField("conjugation", "masdar_translit", e.target.value)
+                  setNestedField(
+                    "conjugation",
+                    "masdar_translit",
+                    e.target.value,
+                  )
                 }
               />
             </div>
@@ -621,7 +662,11 @@ const AddWord = () => {
                 className="form-control"
                 value={form.conjugation.masdar_meaning}
                 onChange={(e) =>
-                  setNestedField("conjugation", "masdar_meaning", e.target.value)
+                  setNestedField(
+                    "conjugation",
+                    "masdar_meaning",
+                    e.target.value,
+                  )
                 }
               />
             </div>
@@ -633,7 +678,9 @@ const AddWord = () => {
                 type="text"
                 className="form-control"
                 value={form.conjugation.form}
-                onChange={(e) => setNestedField("conjugation", "form", e.target.value)}
+                onChange={(e) =>
+                  setNestedField("conjugation", "form", e.target.value)
+                }
               />
             </div>
 
@@ -760,27 +807,39 @@ const AddWord = () => {
           <p className="form-section-title">Aparición en la Sunna (opcional)</p>
 
           <div className="form-row">
-            <label htmlFor="hadith_collection">Colección (slug, ej. bukhari)</label>
+            <label htmlFor="hadith_collection">
+              {"Código de colección abreviado (ej. b -> bukhari)"}
+            </label>
             <input
               id="hadith_collection"
               type="text"
               className="form-control"
-              value={form.hadith_appear.collection}
+              value={form.hadith_appear.collection_name}
               onChange={(e) =>
-                setNestedField("hadith_appear", "collection", e.target.value)
+                setNestedField(
+                  "hadith_appear",
+                  "collection_code",
+                  e.target.value,
+                )
               }
             />
           </div>
 
           <div className="form-row">
-            <label htmlFor="hadith_collection_name">Nombre completo de la colección</label>
+            <label htmlFor="hadith_collection_name">
+              Nombre completo de la colección
+            </label>
             <input
               id="hadith_collection_name"
               type="text"
               className="form-control"
               value={form.hadith_appear.collection_name}
               onChange={(e) =>
-                setNestedField("hadith_appear", "collection_name", e.target.value)
+                setNestedField(
+                  "hadith_appear",
+                  "collection_name",
+                  e.target.value,
+                )
               }
             />
           </div>
@@ -792,7 +851,9 @@ const AddWord = () => {
               type="text"
               className="form-control"
               value={form.hadith_appear.number}
-              onChange={(e) => setNestedField("hadith_appear", "number", e.target.value)}
+              onChange={(e) =>
+                setNestedField("hadith_appear", "number", e.target.value)
+              }
             />
           </div>
 
@@ -804,7 +865,9 @@ const AddWord = () => {
               dir="rtl"
               className="form-control"
               value={form.hadith_appear.sentence}
-              onChange={(e) => setNestedField("hadith_appear", "sentence", e.target.value)}
+              onChange={(e) =>
+                setNestedField("hadith_appear", "sentence", e.target.value)
+              }
             />
           </div>
 
@@ -824,7 +887,9 @@ const AddWord = () => {
           <DynamicStringList
             label="Enlaces de referencia"
             items={form.hadith_appear.links}
-            onChange={(items) => setNestedField("hadith_appear", "links", items)}
+            onChange={(items) =>
+              setNestedField("hadith_appear", "links", items)
+            }
             placeholder="https://sunnah.com/..."
           />
         </div>
@@ -840,7 +905,9 @@ const AddWord = () => {
               dir="rtl"
               className="form-control"
               value={form.phrase.arabic}
-              onChange={(e) => setNestedField("phrase", "arabic", e.target.value)}
+              onChange={(e) =>
+                setNestedField("phrase", "arabic", e.target.value)
+              }
             />
           </div>
 
@@ -851,7 +918,9 @@ const AddWord = () => {
               type="text"
               className="form-control"
               value={form.phrase.translit}
-              onChange={(e) => setNestedField("phrase", "translit", e.target.value)}
+              onChange={(e) =>
+                setNestedField("phrase", "translit", e.target.value)
+              }
             />
           </div>
 
@@ -862,18 +931,24 @@ const AddWord = () => {
               type="text"
               className="form-control"
               value={form.phrase.meaning}
-              onChange={(e) => setNestedField("phrase", "meaning", e.target.value)}
+              onChange={(e) =>
+                setNestedField("phrase", "meaning", e.target.value)
+              }
             />
           </div>
 
           <div className="form-row">
-            <label htmlFor="phrase_reference">Referencia (ej. Sunan Abi Dawud 5071)</label>
+            <label htmlFor="phrase_reference">
+              Referencia (ej. Sunan Abi Dawud 5071)
+            </label>
             <input
               id="phrase_reference"
               type="text"
               className="form-control"
               value={form.phrase.reference}
-              onChange={(e) => setNestedField("phrase", "reference", e.target.value)}
+              onChange={(e) =>
+                setNestedField("phrase", "reference", e.target.value)
+              }
             />
           </div>
 
@@ -890,7 +965,9 @@ const AddWord = () => {
         </div>
 
         <div className="form-section">
-          <p className="form-section-title">Significados adicionales (opcional)</p>
+          <p className="form-section-title">
+            Significados adicionales (opcional)
+          </p>
           <AdditionalsList
             items={form.additionals}
             onChange={(items) => setField("additionals", items)}
