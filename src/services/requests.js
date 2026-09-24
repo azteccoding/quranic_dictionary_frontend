@@ -3,7 +3,7 @@ import {
   AR2ES_API_URI,
   ES2AR_API_URI,
   CREATE_WORD_API_URI,
-  DAILY_WORD_API_URI_LOCAL,
+  DAILY_WORD_API_URI,
 } from "../constants/constants";
 
 // Make a request for a user with a given ID
@@ -50,7 +50,7 @@ export const getDailyWord = async () => {
   try {
     return {
       hasExternalError: false,
-      data: await axios.get(DAILY_WORD_API_URI_LOCAL),
+      data: await axios.get(DAILY_WORD_API_URI),
     };
   } catch (error) {
     return {
