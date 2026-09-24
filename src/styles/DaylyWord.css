@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap");
+
+.palabra-dia {
+  --pd-acento: #b08d57; /* cámbialo por el color principal de tu sitio */
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: 44px;
+  padding: 0.25rem 0.5rem 0.25rem 0.875rem;
+  background: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-inline-start: 3px solid var(--pd-acento);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  animation: pd-entrar 0.3s ease-out;
+}
+
+@keyframes pd-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.palabra-dia__etiqueta {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pd-acento);
+}
+
+.palabra-dia__arabe {
+  flex-shrink: 0;
+  font-family: "Amiri", "Traditional Arabic", serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--bs-emphasis-color);
+}
+
+.palabra-dia__translit {
+  flex-shrink: 0;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+}
+
+/* El significado ocupa el espacio restante y se corta con "…" si no cabe */
+.palabra-dia__significado {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.palabra-dia__cerrar {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  font-size: 0.65rem;
+  opacity: 0.4;
+}
+
+.palabra-dia__cerrar:hover {
+  opacity: 0.9;
+}
+
+/* Móvil: sin etiqueta, para que quepa en una línea */
+@media (max-width: 576px) {
+  .palabra-dia {
+    gap: 0.625rem;
+  }
+  .palabra-dia__etiqueta {
+    display: none;
+  }
+}
+
+/* Pantallas grandes: 70% del ancho, centrado */
+@media (min-width: 992px) {
+  .palabra-dia {
+    width: 70%;
+    margin-inline: auto;
+  }
+}

@@ -4,7 +4,7 @@ const ColorTags = ({ tags }) => {
       ? "text-bg-secondary"
       : "text-bg-pink";
 
-    return tags.noun ? (
+    return tags.noun && !tags.adverb && !tags.preposition ? (
       <span className={`badge ${backgroundStyle}`}>
         {tags.masculine ? "Masculino" : "Femenino"}
       </span>

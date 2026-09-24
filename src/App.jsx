@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import "./styles/App.css";
 import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
+import DaylyWord from "./components/DaylyWord";
 
 // Ruta "escondida" para agregar palabras — cámbiala por la que quieras,
 // nadie la va a adivinar por accidente. Ya no depende de process.env (eso
@@ -24,6 +25,7 @@ function App() {
         </Suspense>
       ) : (
         <>
+          <DaylyWord />
           <Searchbar />
           <Footer />
         </>
