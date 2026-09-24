@@ -3,6 +3,7 @@ import {
   AR2ES_API_URI,
   ES2AR_API_URI,
   CREATE_WORD_API_URI,
+  DAILY_WORD_API_URI_LOCAL,
 } from "../constants/constants";
 
 // Make a request for a user with a given ID
@@ -35,6 +36,21 @@ export const createWord = async (wordData) => {
           "x-api-key": "admin+chingon",
         },
       }),
+    };
+  } catch (error) {
+    return {
+      hasExternalError: true,
+      data: error,
+      errorMessage: error.message,
+    };
+  }
+};
+
+export const getDailyWord = async () => {
+  try {
+    return {
+      hasExternalError: false,
+      data: await axios.get(DAILY_WORD_API_URI_LOCAL),
     };
   } catch (error) {
     return {

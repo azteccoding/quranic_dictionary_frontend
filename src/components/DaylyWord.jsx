@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getDailyWord } from "../services/requests";
 import "../styles/DaylyWord.css";
 
 const STORAGE_KEY = "palabraDelDiaCerrada";
@@ -16,20 +17,19 @@ export default function DaylyWord() {
   const [cerrada, setCerrada] = useState(estaCerrada);
 
   useEffect(() => {
-    const url = "http://localhost:9999/.netlify/functions/palabra-del-dia";
-    console.log("Pidiendo:", url);
+    if (cerrada) return;
 
-    fetch(url)
-      .then((r) => {
-        console.log("Status:", r.status);
-        return r.ok ? r.json() : null;
-      })
-      .then((data) => {
-        console.log("Datos:", data);
-        setPalabra(data);
-      })
-      .catch((err) => console.error("Palabra del día falló:", err));
-  }, []);
+    const cargarPalabra = async () => {
+      const { hasExternalError, data, errorMessage } = await getDailyWord();
+      if (hasExternalError) {
+        console.error("Palabra del día:", errorMessage);
+        return;
+      }
+      setPalabra(data.data); // axios guarda el body en response.data
+    };
+
+    cargarPalabra();
+  }, [cerrada]);
 
   const cerrar = () => {
     try {

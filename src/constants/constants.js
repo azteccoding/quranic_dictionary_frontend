@@ -14,6 +14,11 @@ export const CREATE_WORD_API_URI =
 export const CREATE_WORD_API_URI_LOCAL =
   "http://localhost:9999/.netlify/functions/create_word";
 
+export const DAILY_WORD_API_URI =
+  "https://quranicarabicspanishdictionary.netlify.app/.netlify/functions/palabra-del-dia";
+export const DAILY_WORD_API_URI_LOCAL =
+  "http://localhost:9999/.netlify/functions/palabra-del-dia";
+
 // Hadith collections
 
 export const hadithCollectionCode = {
