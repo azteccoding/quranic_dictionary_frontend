@@ -1,53 +1,6 @@
 import { useState } from "react";
 import { createWord } from "../services/requests";
-
-const emptyConjugation = {
-  root: "",
-  perfect3: "",
-  perfect3_translit: "",
-  perfect1: "",
-  perfect1_translit: "",
-  imperfect_vowel: "",
-  masdar: "",
-  masdar_translit: "",
-  masdar_meaning: "",
-  form: "I",
-  irregular: false,
-};
-
-const initialFormState = {
-  mode: "sustantivo", // "sustantivo" | "verbo" — solo controla la UI
-  spanish: [""],
-  english: "",
-  arabic_sg: "",
-  arabic_pl: [""],
-  translit_sg: "",
-  translit_pl: [""],
-  root: ["", "", ""],
-  masculine: true,
-  dipote: false,
-  pl_diptote: false,
-  foreign: false,
-  synonim: [""],
-  antonym: "",
-  wordClass: "noun", // "noun" | "adjetive" | "adverb" | "preposition" — mutuamente excluyentes
-  quranic_appear: { appearance: "", sentence: "", translation: "" },
-  hadith_appear: {
-    collection_code: "",
-    collection_name: "",
-    number: "",
-    links: [""],
-    sentence: "",
-    translation: "",
-  },
-  phrase: { arabic: "", meaning: "", translit: "", link: "", reference: "" },
-  additionals: [],
-  conjugation: emptyConjugation,
-  participle: {
-    active: { arabic: "", translit: "" },
-    pasive: { arabic: "", translit: "" },
-  },
-};
+import { initialFormState } from "../model/interfaces";
 
 const DynamicStringList = ({ label, items, onChange, placeholder, dir }) => {
   const updateItem = (index, value) => {
@@ -218,6 +171,14 @@ const AddWord = () => {
         link: str(form.phrase.link),
         reference: str(form.phrase.reference),
       },
+      // Si el checkbox está desmarcado, "term" se manda vacío (esqueleto
+      // completo), aunque en el estado se conserve lo que se haya escrito.
+      isTechnicalTerm: !!form.isTechnicalTerm,
+      term: {
+        meaning: form.isTechnicalTerm ? str(form.term.meaning) : "",
+        reference: form.isTechnicalTerm ? str(form.term.reference) : "",
+        link: form.isTechnicalTerm ? str(form.term.link) : "",
+      },
       additionals: form.additionals
         .filter((item) => str(item.arabic))
         .map((item) => ({
@@ -265,6 +226,15 @@ const AddWord = () => {
         state: "error",
         message:
           "Al menos la palabra en árabe y una traducción al español son obligatorias.",
+      });
+      return;
+    }
+
+    if (form.isTechnicalTerm && !form.term.meaning.trim()) {
+      setStatus({
+        state: "error",
+        message:
+          "Si la palabra es un término técnico islámico, su significado técnico es obligatorio.",
       });
       return;
     }
@@ -516,6 +486,68 @@ const AddWord = () => {
             />
             Extranjerismo
           </label>
+        </div>
+
+        <div className="form-section">
+          <p className="form-section-title">Término técnico islámico</p>
+
+          <label className="checkbox-row">
+            <input
+              type="checkbox"
+              checked={form.isTechnicalTerm}
+              onChange={(e) => setField("isTechnicalTerm", e.target.checked)}
+            />
+            Esta palabra es un término técnico islámico
+          </label>
+
+          {form.isTechnicalTerm && (
+            <>
+              <div className="form-row">
+                <label htmlFor="term_meaning">Significado técnico</label>
+                <input
+                  id="term_meaning"
+                  type="text"
+                  className="form-control"
+                  placeholder="Ablución ritual"
+                  value={form.term.meaning}
+                  onChange={(e) =>
+                    setNestedField("term", "meaning", e.target.value)
+                  }
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <label htmlFor="term_reference">
+                  Referencia (obra o fuente)
+                </label>
+                <input
+                  id="term_reference"
+                  type="text"
+                  className="form-control"
+                  placeholder="Diccionario de términos islámicos"
+                  value={form.term.reference}
+                  onChange={(e) =>
+                    setNestedField("term", "reference", e.target.value)
+                  }
+                />
+              </div>
+
+              <div className="form-row">
+                <label htmlFor="term_link">Enlace (opcional)</label>
+                <input
+                  id="term_link"
+                  type="url"
+                  className="form-control"
+                  placeholder="https://..."
+                  value={form.term.link}
+                  onChange={(e) =>
+                    setNestedField("term", "link", e.target.value)
+                  }
+                />
+              </div>
+            </>
+          )}
         </div>
 
         {form.mode === "verbo" && (
@@ -814,7 +846,7 @@ const AddWord = () => {
               id="hadith_collection"
               type="text"
               className="form-control"
-              value={form.hadith_appear.collection_name}
+              value={form.hadith_appear.collection_code}
               onChange={(e) =>
                 setNestedField(
                   "hadith_appear",
