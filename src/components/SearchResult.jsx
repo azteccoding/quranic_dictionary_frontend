@@ -3,6 +3,7 @@ import ExtraMeaning from "./ExtraMeaning";
 import SacredTextInstances from "./SacredTextInstances";
 import SearchSynonyms from "./SearchSynonyms";
 import VerbConjugation from "./VerbConjugation";
+import IslamicTechnicalTerm from "./IslamicTechnicalTerm";
 
 const SearchResult = ({
   arabSearch,
@@ -100,6 +101,7 @@ const SearchResult = ({
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}
+      <IslamicTechnicalTerm isTechnicalTerm={r.isTechnicalTerm} term={r.term} />
       {r.verb && (
         <VerbConjugation
           props={r.conjugation}

@@ -1,0 +1,51 @@
+.islamic-term {
+  --it-acento: #1f6f5c; /* verde profundo, distinto del dorado de la palabra del día */
+  margin: 0.75rem 0;
+  padding: 0.5rem 0.875rem;
+  background: color-mix(in srgb, var(--it-acento) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--it-acento) 25%, transparent);
+  border-inline-start: 3px solid var(--it-acento);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.islamic-term__etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--it-acento);
+}
+
+.islamic-term__icono {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.islamic-term__significado {
+  margin: 0.25rem 0 0;
+  color: var(--bs-emphasis-color);
+}
+
+.islamic-term__fuente {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--bs-secondary-color);
+}
+
+.islamic-term__fuente cite {
+  font-style: italic;
+}
+
+.islamic-term__fuente a {
+  color: var(--it-acento);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.islamic-term__fuente a:hover {
+  text-decoration-thickness: 2px;
+}
