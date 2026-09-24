@@ -39,9 +39,12 @@ const ColorTags = ({ tags }) => {
   const verbForm = tags.verb && (
     <span className="badge text-bg-dark">Forma {tags.form || "I"}</span>
   );
-  const verbVoice = tags.verb && (
-    <span className="badge text-bg-purple">Voz pasiva</span>
-  );
+  const verbVoice =
+    tags.verb && tags.pasive ? (
+      <span className="badge text-bg-purple">Voz pasiva</span>
+    ) : (
+      ""
+    );
 
   return (
     <div className="tag-row">
