@@ -38,6 +38,9 @@ const ColorTags = ({ tags }) => {
   const foreignWord = tags.foreign && (
     <span className="badge text-bg-info">Extranjerismo</span>
   );
+  const colectiveNoun = tags.isCollectiveNoun && (
+    <span className="badge text-bg-orange">Colectivo</span>
+  );
   const verbForm = tags.verb && (
     <span className="badge text-bg-dark">Forma {tags.form || "I"}</span>
   );
@@ -61,6 +64,7 @@ const ColorTags = ({ tags }) => {
       {foreignWord}
       {verbForm}
       {verbVoice}
+      {colectiveNoun}
     </div>
   );
 };

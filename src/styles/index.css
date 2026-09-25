@@ -193,6 +193,12 @@ a:hover {
   color: #fbf3df !important;
 }
 
+/* colectivo */
+.text-bg-orange {
+  background-color: #b8541c !important;
+  color: #fbf3df !important;
+}
+
 /* adjetivo */
 .text-bg-brown {
   background-color: #9c6b3e !important;

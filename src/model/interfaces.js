@@ -25,6 +25,10 @@ export const initialFormState = {
   dipote: false,
   pl_diptote: false,
   foreign: false,
+  isCollectiveNoun: false,
+  indefNoun: "",
+  definite_sg: "",
+  definite_translit: "",
   synonim: [""],
   antonym: "",
   wordClass: "noun", // "noun" | "adjetive" | "adverb" | "preposition" — mutuamente excluyentes

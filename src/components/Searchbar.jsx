@@ -71,6 +71,10 @@ const Searchbar = () => {
       conjugation: word.conjugation,
       isTechnicalTerm: word.isTechnicalTerm,
       term: word.term,
+      isCollectiveNoun: word.isCollectiveNoun,
+      indefNoun: word.indefNoun,
+      definite_sg: word.definite_sg,
+      definite_translit: word.definite_translit,
     };
 
     let updater = JSON.parse(JSON.stringify(agglutinatedWords));

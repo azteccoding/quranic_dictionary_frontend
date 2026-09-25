@@ -142,6 +142,13 @@ const AddWord = () => {
       dipote: form.mode === "sustantivo" && !!form.dipote,
       foreign: !!form.foreign,
       pl_diptote: form.mode === "sustantivo" && !!form.pl_diptote,
+      isCollectiveNoun: form.mode === "sustantivo" && !!form.isCollectiveNoun,
+      indefNoun:
+        form.mode === "sustantivo" && form.isCollectiveNoun
+          ? str(form.indefNoun)
+          : "",
+      definite_sg: str(form.definite_sg),
+      definite_translit: str(form.definite_translit),
       synonim: clean(form.synonim),
       antonym: str(form.antonym),
       noun: form.mode === "sustantivo" && form.wordClass === "noun",
@@ -393,6 +400,34 @@ const AddWord = () => {
             />
           </div>
 
+          <div className="form-row">
+            <label htmlFor="definite_sg">
+              Forma con artículo (solo si cambia, ej. المرأة)
+            </label>
+            <input
+              id="definite_sg"
+              type="text"
+              dir="rtl"
+              className="form-control"
+              value={form.definite_sg}
+              onChange={(e) => setField("definite_sg", e.target.value)}
+            />
+          </div>
+
+          <div className="form-row">
+            <label htmlFor="definite_translit">
+              Transliteración de la forma con artículo
+            </label>
+            <input
+              id="definite_translit"
+              type="text"
+              className="form-control"
+              placeholder="al-marʾa"
+              value={form.definite_translit}
+              onChange={(e) => setField("definite_translit", e.target.value)}
+            />
+          </div>
+
           {form.mode === "sustantivo" && (
             <>
               <DynamicStringList
@@ -476,6 +511,31 @@ const AddWord = () => {
                 />
                 Plural diptote
               </label>
+              <label className="checkbox-row">
+                <input
+                  type="checkbox"
+                  checked={form.isCollectiveNoun}
+                  onChange={(e) =>
+                    setField("isCollectiveNoun", e.target.checked)
+                  }
+                />
+                Nombre colectivo
+              </label>
+              {form.isCollectiveNoun && (
+                <div className="form-row">
+                  <label htmlFor="indefNoun">
+                    Nombre de unidad (ej. شعرة, o جمل para إبل)
+                  </label>
+                  <input
+                    id="indefNoun"
+                    type="text"
+                    dir="rtl"
+                    className="form-control"
+                    value={form.indefNoun}
+                    onChange={(e) => setField("indefNoun", e.target.value)}
+                  />
+                </div>
+              )}
             </>
           )}
           <label className="checkbox-row">

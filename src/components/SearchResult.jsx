@@ -12,6 +12,25 @@ const SearchResult = ({
   handleAgglutinate,
   searchWordManually,
 }) => {
+  const collectiveRow = r?.isCollectiveNoun && (
+    <div className="result-plural-row">
+      {r.indefNoun && (
+        <p className="arabic-word-xs result-plural-item">
+          indef. {r.indefNoun}
+        </p>
+      )}
+    </div>
+  );
+
+  const definiteRow = r?.definite_sg && (
+    <div className="result-plural-row">
+      determ.
+      <p className="arabic-word-xs result-plural-item">
+        {r.definite_sg} ({r.definite_translit})
+      </p>
+    </div>
+  );
+
   const ArabicSearch = r?.arabic_sg && (
     <div>
       <h2 className="arabic-word-xxl">{r.arabic_sg} </h2>
@@ -26,6 +45,8 @@ const SearchResult = ({
           ))}
         </div>
       )}
+      {collectiveRow}
+      {definiteRow}
       <div className="arabic-word-xs result-translation-row">
         {r.spanish.map((i) => (
           <p key={i + "p"} className="result-spanish-item">
@@ -49,6 +70,7 @@ const SearchResult = ({
       <p className="arabic-word-xs">
         {r.arabic_sg} {r.translit_sg}
       </p>
+      {collectiveRow}
       {r.arabic_pl.length > 0 && (
         <div>
           <span className="arabic-word-xs">pl. </span>
@@ -97,6 +119,7 @@ const SearchResult = ({
           form: r.conjugation?.form ? r.conjugation?.form : "",
           synonim: r.synonim,
           pasive: r.pasive ? r.pasive : false,
+          isCollectiveNoun: r.isCollectiveNoun ? r.isCollectiveNoun : "",
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}

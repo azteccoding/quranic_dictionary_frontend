@@ -58,7 +58,12 @@ const AgglutinatedWord = ({
         >
           <div className="card-body">
             <h2 className="arabic-word-s">{word.arabic_sg} </h2>
-            <p className="arabic-word-3xs">{word.translit_sg}</p>
+            <p className="arabic-word-3xs">
+              <span style={{ fontSize: "1.2em" }}>
+                {word.isCollectiveNoun && "colect. "}
+                {word.translit_sg}
+              </span>
+            </p>
             {word.arabic_pl.length > 0 && (
               <div className="result-plural-row">
                 pl.
@@ -70,6 +75,21 @@ const AgglutinatedWord = ({
                     {item} ({word.translit_pl[index]}),
                   </p>
                 ))}
+              </div>
+            )}
+            {word.isCollectiveNoun && word.indefNoun && (
+              <div className="result-plural-row">
+                <p className="arabic-word-3xs result-plural-item">
+                  indef. {word.indefNoun}
+                </p>
+              </div>
+            )}
+            {word.definite_sg && (
+              <div className="result-plural-row">
+                determ.
+                <p className="arabic-word-3xs result-plural-item">
+                  {word.definite_sg} ({word.definite_translit})
+                </p>
               </div>
             )}
             <div className="arabic-word-xxs result-translation-row">
