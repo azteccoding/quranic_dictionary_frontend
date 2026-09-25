@@ -8,8 +8,17 @@ export const emptyConjugation = {
   masdar: "",
   masdar_translit: "",
   masdar_meaning: "",
+  masdar_senses: [], // índices de "spanish" a los que aplica el masdar; [] = todas
   form: "I",
   irregular: false,
+};
+
+// Un plural con sus propiedades: si es diptote y a qué acepciones aplica
+export const emptyPlural = {
+  arabic: "",
+  translit: "",
+  diptote: false,
+  senses: [], // índices de "spanish"; [] = aplica a todas
 };
 
 export const initialFormState = {
@@ -17,13 +26,11 @@ export const initialFormState = {
   spanish: [""],
   english: "",
   arabic_sg: "",
-  arabic_pl: [""],
   translit_sg: "",
-  translit_pl: [""],
+  plurals: [emptyPlural], // se convierte en arabic_pl / translit_pl / pl_diptote / pl_senses al guardar
   root: ["", "", ""],
   masculine: true,
   dipote: false,
-  pl_diptote: false,
   foreign: false,
   isCollectiveNoun: false,
   isCuadriliteral: false,

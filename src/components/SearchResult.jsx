@@ -4,6 +4,7 @@ import SacredTextInstances from "./SacredTextInstances";
 import SearchSynonyms from "./SearchSynonyms";
 import VerbConjugation from "./VerbConjugation";
 import IslamicTechnicalTerm from "./IslamicTechnicalTerm";
+import { DiptoteMark, SenseNote, isPluralDiptote } from "./WordMarks";
 
 const SearchResult = ({
   arabSearch,
@@ -40,7 +41,9 @@ const SearchResult = ({
           pl.
           {r.arabic_pl.map((item, index) => (
             <p key={item + "p"} className="arabic-word-xs result-plural-item">
-              {item} ({r.translit_pl[index]}),
+              {item} ({r.translit_pl[index]})
+              <DiptoteMark show={isPluralDiptote(r.pl_diptote, index)} />
+              <SenseNote senses={r.pl_senses?.[index]} spanish={r.spanish} />,
             </p>
           ))}
         </div>
@@ -79,7 +82,9 @@ const SearchResult = ({
               key={i + "pls"}
               className="arabic-word-xxs-pl result-plural-item"
             >
-              {r.arabic_pl[i]} ({r.translit_pl[i]}),{" "}
+              {r.arabic_pl[i]} ({r.translit_pl[i]})
+              <DiptoteMark show={isPluralDiptote(r.pl_diptote, i)} />
+              <SenseNote senses={r.pl_senses?.[i]} spanish={r.spanish} />,{" "}
             </p>
           ))}
         </div>
@@ -108,7 +113,7 @@ const SearchResult = ({
       <ColorTags
         tags={{
           masculine: r.masculine,
-          dipote: r.dipote,
+          dipote: r.dipote ?? r.diptote,
           pl_diptote: r.pl_diptote,
           foreign: r.foreign,
           verb: r.verb,
@@ -131,6 +136,7 @@ const SearchResult = ({
         <VerbConjugation
           props={r.conjugation}
           participle={r.participle}
+          spanish={r.spanish}
           searchWordManually={searchWordManually}
         />
       )}

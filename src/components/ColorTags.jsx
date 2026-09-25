@@ -29,10 +29,12 @@ const ColorTags = ({ tags }) => {
   );
   const nounInflection = tags.noun && (
     <span className="badge text-bg-danger">
-      {tags.diptote ? "Diptote" : "Triptote"}
+      {tags.dipote ? "Diptote" : "Triptote"}
     </span>
   );
-  const pluralDiptote = tags.pl_diptote && (
+  // Solo para documentos viejos (pl_diptote booleano). Con el formato nuevo
+  // (arreglo), cada plural lleva su propia marca discreta junto a él.
+  const pluralDiptote = tags.pl_diptote === true && (
     <span className="badge text-bg-warning">Plural diptote</span>
   );
   const foreignWord = tags.foreign && (

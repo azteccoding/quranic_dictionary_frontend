@@ -1,5 +1,6 @@
 import { useState } from "react";
 import IslamicTechnicalTerm from "./IslamicTechnicalTerm";
+import { DiptoteMark, SenseNote, isPluralDiptote } from "./WordMarks";
 
 const AgglutinatedWord = ({
   word,
@@ -72,7 +73,13 @@ const AgglutinatedWord = ({
                     key={item + "p"}
                     className="arabic-word-3xs result-plural-item"
                   >
-                    {item} ({word.translit_pl[index]}),
+                    {item} ({word.translit_pl[index]})
+                    <DiptoteMark show={isPluralDiptote(word.pl_diptote, index)} />
+                    <SenseNote
+                      senses={word.pl_senses?.[index]}
+                      spanish={word.spanish}
+                    />
+                    ,
                   </p>
                 ))}
               </div>
@@ -125,6 +132,10 @@ const AgglutinatedWord = ({
                   Sustantivo verbal: {word.conjugation.masdar}{" "}
                   {word.conjugation.masdar_translit}{" "}
                   {word.conjugation.masdar_meaning}
+                  <SenseNote
+                    senses={word.conjugation.masdar_senses}
+                    spanish={word.spanish}
+                  />
                 </p>
                 {word.irregular && (
                   <>

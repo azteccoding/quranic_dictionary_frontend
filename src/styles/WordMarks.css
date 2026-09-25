@@ -1,0 +1,55 @@
+/* Marcas pequeñas y discretas: solo indicativas, no llaman la atención */
+.word-mark {
+  margin-inline-start: 0.3em;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.72rem; /* tamaño fijo: el texto árabe cambia mucho de tamaño */
+  font-style: italic;
+  font-weight: normal;
+  color: var(--bs-secondary-color, #6c757d);
+  opacity: 0.85;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.word-mark--sense {
+  white-space: normal;
+}
+
+/* ---------- Formulario de alta (AddWord) ---------- */
+.plural-entry {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--bs-border-color, #dee2e6);
+}
+
+.plural-entry__diptote {
+  font-size: 0.9rem;
+}
+
+.sense-selector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.9rem;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.sense-selector__label {
+  font-weight: 600;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.sense-selector__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
+.sense-selector__hint {
+  font-style: italic;
+  color: var(--bs-secondary-color, #6c757d);
+  font-size: 0.8rem;
+}

@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { createWord } from "../services/requests";
-import { initialFormState } from "../model/interfaces";
+import { initialFormState, emptyPlural } from "../model/interfaces";
+import "../styles/WordMarks.css";
 
-const DynamicStringList = ({ label, items, onChange, placeholder, dir }) => {
+const DynamicStringList = ({
+  label,
+  items,
+  onChange,
+  placeholder,
+  dir,
+  onRemove,
+}) => {
   const updateItem = (index, value) => {
     const next = [...items];
     next[index] = value;
     onChange(next);
   };
   const addItem = () => onChange([...items, ""]);
-  const removeItem = (index) => onChange(items.filter((_, i) => i !== index));
+  const removeItem = (index) => {
+    onChange(items.filter((_, i) => i !== index));
+    onRemove?.(index); // avisa qué posición se borró (para reajustar acepciones)
+  };
 
   return (
     <div className="form-row">
@@ -36,6 +47,105 @@ const DynamicStringList = ({ label, items, onChange, placeholder, dir }) => {
       ))}
       <button type="button" className="btn-add-item" onClick={addItem}>
         + Agregar
+      </button>
+    </div>
+  );
+};
+
+// Casillas para elegir a qué acepciones (traducciones) aplica un plural o masdar.
+// Sin ninguna marcada = aplica a todas. Solo aparece si hay 2+ traducciones escritas.
+const SenseSelector = ({ label, spanish, selected = [], onChange }) => {
+  const options = spanish
+    .map((texto, i) => ({ texto: texto.trim(), i }))
+    .filter((o) => o.texto);
+
+  if (options.length < 2) return null;
+
+  const toggle = (i) =>
+    onChange(
+      selected.includes(i)
+        ? selected.filter((x) => x !== i)
+        : [...selected, i].sort((a, b) => a - b),
+    );
+
+  return (
+    <div className="sense-selector">
+      <span className="sense-selector__label">{label}</span>
+      {options.map((o) => (
+        <label key={o.i} className="sense-selector__option">
+          <input
+            type="checkbox"
+            checked={selected.includes(o.i)}
+            onChange={() => toggle(o.i)}
+          />{" "}
+          {o.texto}
+        </label>
+      ))}
+      <span className="sense-selector__hint">(sin marcar = todas)</span>
+    </div>
+  );
+};
+
+// Cada plural en su propio renglón: árabe, transliteración, diptote y acepciones
+const PluralsList = ({ items, spanish, onChange }) => {
+  const updateField = (index, field, value) => {
+    const next = [...items];
+    next[index] = { ...next[index], [field]: value };
+    onChange(next);
+  };
+  const addItem = () => onChange([...items, { ...emptyPlural, senses: [] }]);
+  const removeItem = (index) => onChange(items.filter((_, i) => i !== index));
+
+  return (
+    <div className="form-row">
+      <label>Plurales</label>
+      {items.map((item, index) => (
+        <div className="plural-entry" key={index}>
+          <div className="dynamic-list-item">
+            <input
+              type="text"
+              className="form-control"
+              dir="rtl"
+              placeholder="كُتُب"
+              value={item.arabic}
+              onChange={(e) => updateField(index, "arabic", e.target.value)}
+            />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="kutub"
+              value={item.translit}
+              onChange={(e) => updateField(index, "translit", e.target.value)}
+            />
+            <button
+              type="button"
+              className="btn-remove"
+              title="Eliminar plural"
+              onClick={() => removeItem(index)}
+            >
+              &times;
+            </button>
+          </div>
+
+          <label className="checkbox-row plural-entry__diptote">
+            <input
+              type="checkbox"
+              checked={item.diptote}
+              onChange={(e) => updateField(index, "diptote", e.target.checked)}
+            />
+            Diptote
+          </label>
+
+          <SenseSelector
+            label="Aplica solo a:"
+            spanish={spanish}
+            selected={item.senses}
+            onChange={(senses) => updateField(index, "senses", senses)}
+          />
+        </div>
+      ))}
+      <button type="button" className="btn-add-item" onClick={addItem}>
+        + Agregar plural
       </button>
     </div>
   );
@@ -126,6 +236,21 @@ const AddWord = () => {
       return { ...prev, isCuadriliteral: checked, root };
     });
 
+  // Si se borra una traducción, los índices de acepciones posteriores se recorren
+  // para que cada plural/masdar siga apuntando a la misma traducción
+  const handleSpanishRemoved = (removed) => {
+    const remap = (arr = []) =>
+      arr.filter((i) => i !== removed).map((i) => (i > removed ? i - 1 : i));
+    setForm((prev) => ({
+      ...prev,
+      plurals: prev.plurals.map((p) => ({ ...p, senses: remap(p.senses) })),
+      conjugation: {
+        ...prev.conjugation,
+        masdar_senses: remap(prev.conjugation.masdar_senses),
+      },
+    }));
+  };
+
   const handleModeChange = (mode) => {
     setForm((prev) => ({ ...prev, mode }));
   };
@@ -141,17 +266,39 @@ const AddWord = () => {
     const clean = (arr) => arr.map((s) => s.trim()).filter(Boolean);
     const str = (value) => (value || "").trim();
 
+    // "spanish" se guarda sin traducciones vacías, así que los índices del
+    // formulario se traducen a los índices finales. Si se marcaron todas las
+    // acepciones, se guarda [] (= aplica a todas).
+    const senseMap = {};
+    let finalIndex = 0;
+    form.spanish.forEach((s, i) => {
+      if (s.trim()) senseMap[i] = finalIndex++;
+    });
+    const mapSenses = (arr = []) => {
+      const mapped = [
+        ...new Set(arr.filter((i) => i in senseMap).map((i) => senseMap[i])),
+      ].sort((a, b) => a - b);
+      return mapped.length === finalIndex ? [] : mapped;
+    };
+
+    // Plurales: arreglos paralelos (arabic_pl, translit_pl, pl_diptote, pl_senses)
+    const plurals =
+      form.mode === "sustantivo"
+        ? form.plurals.filter((p) => str(p.arabic))
+        : [];
+
     const payload = {
       spanish: clean(form.spanish),
       english: str(form.english),
       arabic_sg: str(form.arabic_sg),
-      arabic_pl: form.mode === "sustantivo" ? clean(form.arabic_pl) : [],
+      arabic_pl: plurals.map((p) => str(p.arabic)),
       translit_sg: str(form.translit_sg),
-      translit_pl: form.mode === "sustantivo" ? clean(form.translit_pl) : [],
+      translit_pl: plurals.map((p) => str(p.translit)),
       root: clean(form.root),
       dipote: form.mode === "sustantivo" && !!form.dipote,
       foreign: !!form.foreign,
-      pl_diptote: form.mode === "sustantivo" && !!form.pl_diptote,
+      pl_diptote: plurals.map((p) => !!p.diptote),
+      pl_senses: plurals.map((p) => mapSenses(p.senses)),
       isCollectiveNoun: form.mode === "sustantivo" && !!form.isCollectiveNoun,
       indefNoun:
         form.mode === "sustantivo" && form.isCollectiveNoun
@@ -217,6 +364,7 @@ const AddWord = () => {
         masdar: str(form.conjugation.masdar),
         masdar_translit: str(form.conjugation.masdar_translit),
         masdar_meaning: str(form.conjugation.masdar_meaning),
+        masdar_senses: mapSenses(form.conjugation.masdar_senses),
         form: str(form.conjugation.form) || "I",
         irregular: !!form.conjugation.irregular,
       };
@@ -459,19 +607,10 @@ const AddWord = () => {
 
           {form.mode === "sustantivo" && (
             <>
-              <DynamicStringList
-                label="Árabe (plural)"
-                items={form.arabic_pl}
-                onChange={(items) => setField("arabic_pl", items)}
-                dir="rtl"
-                placeholder="كُتُب"
-              />
-
-              <DynamicStringList
-                label="Transliteración (plural)"
-                items={form.translit_pl}
-                onChange={(items) => setField("translit_pl", items)}
-                placeholder="kutub"
+              <PluralsList
+                items={form.plurals}
+                spanish={form.spanish}
+                onChange={(items) => setField("plurals", items)}
               />
             </>
           )}
@@ -480,6 +619,7 @@ const AddWord = () => {
             label="Traducciones al español"
             items={form.spanish}
             onChange={(items) => setField("spanish", items)}
+            onRemove={handleSpanishRemoved}
             placeholder="libro"
           />
 
@@ -540,14 +680,6 @@ const AddWord = () => {
                   onChange={(e) => setField("dipote", e.target.checked)}
                 />
                 Dipote
-              </label>
-              <label className="checkbox-row">
-                <input
-                  type="checkbox"
-                  checked={form.pl_diptote}
-                  onChange={(e) => setField("pl_diptote", e.target.checked)}
-                />
-                Plural diptote
               </label>
               <label className="checkbox-row">
                 <input
@@ -764,6 +896,14 @@ const AddWord = () => {
                     "masdar_meaning",
                     e.target.value,
                   )
+                }
+              />
+              <SenseSelector
+                label="El masdar aplica solo a:"
+                spanish={form.spanish}
+                selected={form.conjugation.masdar_senses}
+                onChange={(senses) =>
+                  setNestedField("conjugation", "masdar_senses", senses)
                 }
               />
             </div>

@@ -67,6 +67,8 @@ const Searchbar = () => {
       arabic_pl: word.arabic_pl,
       translit_sg: word.translit_sg,
       translit_pl: word.translit_pl,
+      pl_diptote: word.pl_diptote,
+      pl_senses: word.pl_senses,
       isVerb: word.verb,
       conjugation: word.conjugation,
       isTechnicalTerm: word.isTechnicalTerm,

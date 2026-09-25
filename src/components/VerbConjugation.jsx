@@ -1,4 +1,6 @@
-const VerbConjugation = ({ props, participle, searchWordManually }) => {
+import { SenseNote } from "./WordMarks";
+
+const VerbConjugation = ({ props, participle, spanish, searchWordManually }) => {
   const hasParticiple =
     participle && (participle.active?.arabic || participle.pasive?.arabic);
 
@@ -25,6 +27,7 @@ const VerbConjugation = ({ props, participle, searchWordManually }) => {
       <p className="arabic-word-xxs verb-p">
         Sustantivo verbal: {props.masdar} {props.masdar_translit}{" "}
         {props.masdar_meaning}
+        <SenseNote senses={props.masdar_senses} spanish={spanish} />
       </p>
 
       {hasParticiple && (
