@@ -211,6 +211,12 @@ a:hover {
   color: #fbf3df !important;
 }
 
+/* verbo de 4 cuatrilítero */
+.text-bg-berry {
+  background-color: #9b3a6a !important;
+  color: #fbf3df !important;
+}
+
 /* verbo */
 .text-bg-success {
   background-color: #5f7a4f !important;

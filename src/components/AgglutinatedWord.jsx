@@ -118,6 +118,7 @@ const AgglutinatedWord = ({
                 </p>
                 <p className="arabic-word-xxs verb-p">
                   Forma {word.conjugation.form}
+                  {word.isCuadriliteral && " (cuatrilítero)"}
                 </p>
                 <br />
                 <p className="arabic-word-xxs verb-p">

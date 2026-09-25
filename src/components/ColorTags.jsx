@@ -38,6 +38,9 @@ const ColorTags = ({ tags }) => {
   const foreignWord = tags.foreign && (
     <span className="badge text-bg-info">Extranjerismo</span>
   );
+  const cuadriliteral = tags.isCuadriliteral && (
+    <span className="badge text-bg-berry">Cuatrilítero</span>
+  );
   const colectiveNoun = tags.isCollectiveNoun && (
     <span className="badge text-bg-orange">Colectivo</span>
   );
@@ -59,6 +62,7 @@ const ColorTags = ({ tags }) => {
       {adverb}
       {wordGender()}
       {verb}
+      {cuadriliteral}
       {nounInflection}
       {pluralDiptote}
       {foreignWord}

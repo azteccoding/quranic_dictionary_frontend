@@ -26,6 +26,7 @@ export const initialFormState = {
   pl_diptote: false,
   foreign: false,
   isCollectiveNoun: false,
+  isCuadriliteral: false,
   indefNoun: "",
   definite_sg: "",
   definite_translit: "",

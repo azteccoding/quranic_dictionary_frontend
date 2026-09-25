@@ -120,6 +120,9 @@ const SearchResult = ({
           synonim: r.synonim,
           pasive: r.pasive ? r.pasive : false,
           isCollectiveNoun: r.isCollectiveNoun ? r.isCollectiveNoun : "",
+          isCuadriliteral: r.isCuadriliteral
+            ? r.isCuadriliteral
+            : "",
         }}
       />
       {arabSearch ? ArabicSearch : SpanishSearch}

@@ -116,6 +116,16 @@ const AddWord = () => {
       },
     }));
 
+  // Palabra cuatrilítera (verbo o sustantivo): la raíz pasa a tener 4 casillas (y regresa a 3 si
+  // se desmarca, solo si la cuarta quedó vacía)
+  const handleCuadriliteralChange = (checked) =>
+    setForm((prev) => {
+      let root = [...prev.root];
+      if (checked) while (root.length < 4) root.push("");
+      else if (root.length === 4 && !root[3].trim()) root = root.slice(0, 3);
+      return { ...prev, isCuadriliteral: checked, root };
+    });
+
   const handleModeChange = (mode) => {
     setForm((prev) => ({ ...prev, mode }));
   };
@@ -147,8 +157,8 @@ const AddWord = () => {
         form.mode === "sustantivo" && form.isCollectiveNoun
           ? str(form.indefNoun)
           : "",
-      definite_sg: str(form.definite_sg),
-      definite_translit: str(form.definite_translit),
+      definite_sg: form.mode === "sustantivo" ? str(form.definite_sg) : "",
+      definite_translit: form.mode === "sustantivo" ? str(form.definite_translit) : "",
       synonim: clean(form.synonim),
       antonym: str(form.antonym),
       noun: form.mode === "sustantivo" && form.wordClass === "noun",
@@ -157,6 +167,7 @@ const AddWord = () => {
       preposition:
         form.mode === "sustantivo" && form.wordClass === "preposition",
       verb: form.mode === "verbo",
+      isCuadriliteral: !!form.isCuadriliteral,
       masculine: !!form.masculine,
       quranic_appear: {
         appearance: str(form.quranic_appear.appearance),
@@ -242,6 +253,20 @@ const AddWord = () => {
         state: "error",
         message:
           "Si la palabra es un término técnico islámico, su significado técnico es obligatorio.",
+      });
+      return;
+    }
+
+    if (
+      form.mode === "verbo" &&
+      form.isCuadriliteral &&
+      !["I", "II", "III", "IV"].includes(
+        (form.conjugation.form || "I").trim().toUpperCase(),
+      )
+    ) {
+      setStatus({
+        state: "error",
+        message: "Los verbos cuatrilíteros solo tienen formas I a IV.",
       });
       return;
     }
@@ -400,33 +425,37 @@ const AddWord = () => {
             />
           </div>
 
-          <div className="form-row">
-            <label htmlFor="definite_sg">
-              Forma con artículo (solo si cambia, ej. المرأة)
-            </label>
-            <input
-              id="definite_sg"
-              type="text"
-              dir="rtl"
-              className="form-control"
-              value={form.definite_sg}
-              onChange={(e) => setField("definite_sg", e.target.value)}
-            />
-          </div>
+          {form.mode === "sustantivo" && (
+            <>
+            <div className="form-row">
+              <label htmlFor="definite_sg">
+                Forma con artículo (solo si cambia, ej. المرأة)
+              </label>
+              <input
+                id="definite_sg"
+                type="text"
+                dir="rtl"
+                className="form-control"
+                value={form.definite_sg}
+                onChange={(e) => setField("definite_sg", e.target.value)}
+              />
+            </div>
 
-          <div className="form-row">
-            <label htmlFor="definite_translit">
-              Transliteración de la forma con artículo
-            </label>
-            <input
-              id="definite_translit"
-              type="text"
-              className="form-control"
-              placeholder="al-marʾa"
-              value={form.definite_translit}
-              onChange={(e) => setField("definite_translit", e.target.value)}
-            />
-          </div>
+            <div className="form-row">
+              <label htmlFor="definite_translit">
+                Transliteración de la forma con artículo
+              </label>
+              <input
+                id="definite_translit"
+                type="text"
+                className="form-control"
+                placeholder="al-marʾa"
+                value={form.definite_translit}
+                onChange={(e) => setField("definite_translit", e.target.value)}
+              />
+            </div>
+            </>
+          )}
 
           {form.mode === "sustantivo" && (
             <>
@@ -472,6 +501,15 @@ const AddWord = () => {
             dir="rtl"
             placeholder="ك"
           />
+
+          <label className="checkbox-row">
+            <input
+              type="checkbox"
+              checked={form.isCuadriliteral}
+              onChange={(e) => handleCuadriliteralChange(e.target.checked)}
+            />
+            Cuatrilítero (raíz de 4 letras)
+          </label>
 
           <DynamicStringList
             label="Sinónimos"
@@ -731,7 +769,11 @@ const AddWord = () => {
             </div>
 
             <div className="form-row">
-              <label htmlFor="conj_form">Forma (I, II, III…)</label>
+              <label htmlFor="conj_form">
+                {form.isCuadriliteral
+                  ? "Forma (I–IV)"
+                  : "Forma (I, II, III…)"}
+              </label>
               <input
                 id="conj_form"
                 type="text"

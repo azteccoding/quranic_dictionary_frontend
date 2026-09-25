@@ -72,6 +72,7 @@ const Searchbar = () => {
       isTechnicalTerm: word.isTechnicalTerm,
       term: word.term,
       isCollectiveNoun: word.isCollectiveNoun,
+      isCuadriliteral: word.isCuadriliteral,
       indefNoun: word.indefNoun,
       definite_sg: word.definite_sg,
       definite_translit: word.definite_translit,
