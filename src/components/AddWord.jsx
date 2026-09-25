@@ -569,39 +569,6 @@ const AddWord = () => {
             </div>
 
             <div className="form-row">
-              <label htmlFor="perfect3">Perfectivo (3ra persona)</label>
-              <input
-                id="perfect3"
-                type="text"
-                dir="rtl"
-                className="form-control"
-                value={form.conjugation.perfect3}
-                onChange={(e) =>
-                  setNestedField("conjugation", "perfect3", e.target.value)
-                }
-              />
-            </div>
-
-            <div className="form-row">
-              <label htmlFor="perfect3_translit">
-                Transliteración perfectivo
-              </label>
-              <input
-                id="perfect3_translit"
-                type="text"
-                className="form-control"
-                value={form.conjugation.perfect3_translit}
-                onChange={(e) =>
-                  setNestedField(
-                    "conjugation",
-                    "perfect3_translit",
-                    e.target.value,
-                  )
-                }
-              />
-            </div>
-
-            <div className="form-row">
               <label htmlFor="perfect1">
                 Perfectivo (1ra sing., si es irregular)
               </label>

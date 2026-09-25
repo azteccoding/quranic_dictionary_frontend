@@ -8,10 +8,6 @@ const VerbConjugation = ({ props, participle, searchWordManually }) => {
 
       <p className="arabic-word-xxs verb-p">Raíz: {props.root}</p>
       <br />
-      <p className="arabic-word-xxs verb-p">
-        Perfectivo: {props.perfect3} {props.perfect3_translit}
-      </p>
-      <br />
       {props.irregular && (
         <>
           {" "}
@@ -42,7 +38,9 @@ const VerbConjugation = ({ props, participle, searchWordManually }) => {
                 className="word-link"
                 onClick={() => searchWordManually(participle.active.arabic)}
               >
-                <span className="arabic-word-s">{participle.active.arabic}</span>
+                <span className="arabic-word-s">
+                  {participle.active.arabic}
+                </span>
               </button>{" "}
               ({participle.active.translit})
             </p>
@@ -55,7 +53,9 @@ const VerbConjugation = ({ props, participle, searchWordManually }) => {
                 className="word-link"
                 onClick={() => searchWordManually(participle.pasive.arabic)}
               >
-                <span className="arabic-word-s">{participle.pasive.arabic}</span>
+                <span className="arabic-word-s">
+                  {participle.pasive.arabic}
+                </span>
               </button>{" "}
               ({participle.pasive.translit})
             </p>
