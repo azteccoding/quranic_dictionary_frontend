@@ -32,6 +32,7 @@ export const initialFormState = {
   masculine: true,
   dipote: false,
   foreign: false,
+  pasive: false, // voz pasiva (solo verbos)
   isCollectiveNoun: false,
   isCuadriliteral: false,
   indefNoun: "",

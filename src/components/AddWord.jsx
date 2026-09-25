@@ -314,6 +314,7 @@ const AddWord = () => {
       preposition:
         form.mode === "sustantivo" && form.wordClass === "preposition",
       verb: form.mode === "verbo",
+      pasive: form.mode === "verbo" && !!form.pasive,
       isCuadriliteral: !!form.isCuadriliteral,
       masculine: !!form.masculine,
       quranic_appear: {
@@ -547,7 +548,66 @@ const AddWord = () => {
         </div>
 
         <div className="form-section">
-          <p className="form-section-title">Palabra</p>
+          <p className="form-section-title">
+            {form.mode === "verbo" ? "Verbo" : "Palabra"}
+          </p>
+
+          {form.mode === "verbo" && (
+            <label className="checkbox-row">
+              <input
+                type="checkbox"
+                checked={form.pasive}
+                onChange={(e) => setField("pasive", e.target.checked)}
+              />
+              Voz pasiva
+            </label>
+          )}
+
+          {form.mode === "sustantivo" && (
+            <>
+              <label className="checkbox-row">
+                <input
+                  type="checkbox"
+                  checked={form.dipote}
+                  onChange={(e) => setField("dipote", e.target.checked)}
+                />
+                Dipote
+              </label>
+              <label className="checkbox-row">
+                <input
+                  type="checkbox"
+                  checked={form.isCollectiveNoun}
+                  onChange={(e) =>
+                    setField("isCollectiveNoun", e.target.checked)
+                  }
+                />
+                Nombre colectivo
+              </label>
+              {form.isCollectiveNoun && (
+                <div className="form-row">
+                  <label htmlFor="indefNoun">
+                    Nombre de unidad (ej. شعرة, o جمل para إبل)
+                  </label>
+                  <input
+                    id="indefNoun"
+                    type="text"
+                    dir="rtl"
+                    className="form-control"
+                    value={form.indefNoun}
+                    onChange={(e) => setField("indefNoun", e.target.value)}
+                  />
+                </div>
+              )}
+            </>
+          )}
+          <label className="checkbox-row">
+            <input
+              type="checkbox"
+              checked={form.foreign}
+              onChange={(e) => setField("foreign", e.target.checked)}
+            />
+            Extranjerismo
+          </label>
 
           <div className="form-row">
             <label htmlFor="arabic_sg">Árabe (singular)</label>
@@ -671,51 +731,6 @@ const AddWord = () => {
             />
           </div>
 
-          {form.mode === "sustantivo" && (
-            <>
-              <label className="checkbox-row">
-                <input
-                  type="checkbox"
-                  checked={form.dipote}
-                  onChange={(e) => setField("dipote", e.target.checked)}
-                />
-                Dipote
-              </label>
-              <label className="checkbox-row">
-                <input
-                  type="checkbox"
-                  checked={form.isCollectiveNoun}
-                  onChange={(e) =>
-                    setField("isCollectiveNoun", e.target.checked)
-                  }
-                />
-                Nombre colectivo
-              </label>
-              {form.isCollectiveNoun && (
-                <div className="form-row">
-                  <label htmlFor="indefNoun">
-                    Nombre de unidad (ej. شعرة, o جمل para إبل)
-                  </label>
-                  <input
-                    id="indefNoun"
-                    type="text"
-                    dir="rtl"
-                    className="form-control"
-                    value={form.indefNoun}
-                    onChange={(e) => setField("indefNoun", e.target.value)}
-                  />
-                </div>
-              )}
-            </>
-          )}
-          <label className="checkbox-row">
-            <input
-              type="checkbox"
-              checked={form.foreign}
-              onChange={(e) => setField("foreign", e.target.checked)}
-            />
-            Extranjerismo
-          </label>
         </div>
 
         <div className="form-section">
