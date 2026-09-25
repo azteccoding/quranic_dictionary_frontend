@@ -213,19 +213,26 @@ const Searchbar = () => {
           <label htmlFor="gsearch" className="form-label">
             Buscar
           </label>
-          <input
-            type="search"
-            id="gsearch"
-            className="form-control mobile-input-lg"
-            aria-label="default input example"
-            name="gsearch"
-            ref={inputReference}
-            placeholder={arab2EspSelected ? "كتاب" : "libro"}
-            onChange={handleInput}
-            value={searchWord}
-          />
+          <div className="search-input-row">
+            <input
+              type="search"
+              id="gsearch"
+              className="form-control mobile-input-lg"
+              aria-label="Palabra a buscar"
+              name="gsearch"
+              ref={inputReference}
+              placeholder={arab2EspSelected ? "كتاب" : "libro"}
+              onChange={handleInput}
+              value={searchWord}
+            />
 
-          <input type="submit" className="btn btn-primary mb-4 btn-lg" />
+            <button
+              type="submit"
+              className="btn btn-primary btn-lg search-submit"
+            >
+              Buscar
+            </button>
+          </div>
         </form>
       </div>
       {isLoading && (

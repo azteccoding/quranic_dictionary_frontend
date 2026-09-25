@@ -12,13 +12,13 @@
   border-inline-start: 3px solid var(--pd-acento);
   border-radius: 0.5rem;
   font-size: 0.9rem;
-  animation: pd-entrar 0.3s ease-out;
+  animation: pd-entrar 0.9s cubic-bezier(0.22, 1, 0.36, 1); /* bajada más lenta y suave */
 }
 
 @keyframes pd-entrar {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-14px);
   }
   to {
     opacity: 1;
@@ -69,13 +69,55 @@
   opacity: 0.9;
 }
 
-/* Móvil: sin etiqueta, para que quepa en una línea */
-@media (max-width: 576px) {
+/* Pantallas chicas: banner más alto, en varias líneas
+   1ª línea: etiqueta · 2ª: árabe + transliteración · 3ª: significado */
+@media (max-width: 768px) {
   .palabra-dia {
-    gap: 0.625rem;
+    position: relative;
+    width: 94%;
+    margin-inline: auto; /* centrado, deja ver los bordes laterales */
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    column-gap: 0.75rem;
+    justify-content: center; /* centra la fila de árabe + transliteración */
+    min-height: auto;
+    padding: 0.75rem 0.875rem 0.875rem; /* simétrico para que el centro sea el real */
   }
+
   .palabra-dia__etiqueta {
-    display: none;
+    flex-basis: 100%;
+    font-size: 0.72rem;
+    text-align: center;
+    padding-inline: 2rem; /* simétrico: centro real y no se encima con la × */
+    box-sizing: border-box;
+  }
+
+  .palabra-dia__arabe {
+    font-size: 1.85rem;
+    line-height: 1.3;
+  }
+
+  .palabra-dia__translit {
+    font-size: 1rem;
+  }
+
+  /* El significado baja a su propia línea y puede ocupar hasta 2 renglones */
+  .palabra-dia__significado {
+    flex-basis: 100%;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  /* La × se fija en la esquina superior derecha */
+  .palabra-dia__cerrar {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    margin: 0;
+    font-size: 1.05rem; /* × más grande y fácil de tocar */
+    opacity: 0.55;
   }
 }
 

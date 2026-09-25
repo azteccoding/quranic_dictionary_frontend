@@ -140,6 +140,36 @@ a:hover {
   padding: 1rem 0 !important;
 }
 
+/* Input + botón de búsqueda */
+.search-input-row {
+  display: flex;
+  flex-direction: column; /* móvil: botón abajo, a todo lo ancho */
+  gap: 0.5rem;
+}
+
+.search-submit {
+  margin-bottom: 1.5rem;
+}
+
+/* Pantallas grandes: botón a la derecha del input, mismo alto */
+@media (min-width: 769px) {
+  .search-input-row {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .search-input-row .form-control {
+    flex: 1;
+  }
+
+  .search-submit {
+    width: auto;
+    margin-bottom: 0;
+    padding-inline: 2rem;
+    white-space: nowrap;
+  }
+}
+
 .result-count {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
